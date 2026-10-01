@@ -4,15 +4,27 @@ import Header from '../components/Header.astro';
 import CertificateCard from '../components/CertificateCard.astro';
 import CertificateDetail from '../components/CertificateDetail.astro';
 import profile from '../data/profile.json';
-import { categories, certificates } from '../lib/certificates';
+import { categories, certificates, type Certificate } from '../lib/certificates';
 
-// Default order: featured first, then newest. The browser script re-sorts when the visitor changes it.
-const sorted = [...certificates].sort(
-  (a, b) => Number(b.featured) - Number(a.featured) || b.dateEarned.localeCompare(a.dateEarned),
-);
+const newestFirst = (a: Certificate, b: Certificate) => b.dateEarned.localeCompare(a.dateEarned);
 
-const countFor = (id: string) => certificates.filter((c) => c.category === id).length;
-const usedCategories = categories.filter((c) => countFor(c.id) > 0);
+// The page is split into sections: Featured first, then one per category (in categories.json order).
+// Featured certificates only appear in the Featured section.
+const sections = [
+  {
+    id: 'featured',
+    label: '★ Featured',
+    color: 'var(--color-accent)',
+    certs: certificates.filter((c) => c.featured).sort(newestFirst),
+  },
+  ...categories.map((cat) => ({
+    id: cat.id,
+    label: cat.label,
+    color: cat.color,
+    certs: certificates.filter((c) => c.category === cat.id && !c.featured).sort(newestFirst),
+  })),
+].filter((section) => section.certs.length > 0);
+
 const lastUpdated = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
 ---
 
@@ -20,52 +32,75 @@ const lastUpdated = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'l
   <Header />
 
   <main class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-    <section aria-label="Filter certificates" class="mb-8 flex flex-col gap-4">
-      <div class="flex flex-wrap gap-2" role="group" aria-label="Category">
-        <button type="button" data-filter="all" aria-pressed="true" class="chip" style="--cat: var(--color-ink)">
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row">
+      <label class="relative flex-1">
+        <span class="sr-only">Search certificates</span>
+        <input
+          id="search"
+          type="search"
+          placeholder="Search by title, issuer or skill…"
+          class="w-full rounded-full bg-white px-5 py-2.5 shadow-sm ring-1 ring-ink/10 outline-none placeholder:text-muted focus:ring-2 focus:ring-accent"
+        />
+      </label>
+      <label class="flex items-center gap-2 text-sm font-semibold">
+        Sort
+        <select id="sort" class="rounded-full bg-white px-4 py-2.5 shadow-sm ring-1 ring-ink/10 outline-none focus:ring-2 focus:ring-accent">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="title">A–Z</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Sticky category bar: clicking a chip scrolls to that section; the active chip follows your scrolling. -->
+    <nav
+      id="category-nav"
+      aria-label="Jump to category"
+      class="sticky top-0 z-20 -mx-4 mb-2 bg-cream/90 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6"
+    >
+      <div class="flex gap-2 overflow-x-auto [scrollbar-width:none]">
+        <button type="button" data-jump="all" aria-current="true" class="chip" style="--cat: var(--color-ink)">
           All <span class="opacity-60">{certificates.length}</span>
         </button>
         {
-          usedCategories.map((cat) => (
-            <button type="button" data-filter={cat.id} aria-pressed="false" class="chip" style={`--cat: ${cat.color}`}>
-              {cat.label} <span class="opacity-60">{countFor(cat.id)}</span>
+          sections.map((section) => (
+            <button type="button" data-jump={section.id} aria-current="false" class="chip" style={`--cat: ${section.color}`}>
+              {section.label} <span class="opacity-60" data-chip-count>{section.certs.length}</span>
             </button>
           ))
         }
       </div>
+    </nav>
 
-      <div class="flex flex-col gap-3 sm:flex-row">
-        <label class="relative flex-1">
-          <span class="sr-only">Search certificates</span>
-          <input
-            id="search"
-            type="search"
-            placeholder="Search by title, issuer or skill…"
-            class="w-full rounded-full bg-white px-5 py-2.5 shadow-sm ring-1 ring-ink/10 outline-none placeholder:text-muted focus:ring-2 focus:ring-accent"
-          />
-        </label>
-        <label class="flex items-center gap-2 text-sm font-semibold">
-          Sort
-          <select id="sort" class="rounded-full bg-white px-4 py-2.5 shadow-sm ring-1 ring-ink/10 outline-none focus:ring-2 focus:ring-accent">
-            <option value="featured">Featured first</option>
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="title">A–Z</option>
-          </select>
-        </label>
-      </div>
+    <p id="result-count" class="mb-6 text-sm text-muted" aria-live="polite">
+      Showing {certificates.length} of {certificates.length} certificates
+    </p>
 
-      <p id="result-count" class="text-sm text-muted" aria-live="polite">
-        Showing {certificates.length} of {certificates.length} certificates
-      </p>
-    </section>
-
-    <div id="grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map((cert) => <CertificateCard cert={cert} />)}
-    </div>
+    {
+      sections.map((section) => (
+        <section
+          id={`section-${section.id}`}
+          data-section={section.id}
+          aria-labelledby={`heading-${section.id}`}
+          class="mb-14 scroll-mt-20"
+          style={`--cat: ${section.color}`}
+        >
+          <h2 id={`heading-${section.id}`} class="mb-5 flex items-center gap-3 font-display text-2xl cat-text">
+            {section.label}
+            <span class="rounded-full px-2.5 py-0.5 font-sans text-sm font-bold cat-tint" data-section-count>
+              {section.certs.length}
+            </span>
+            <span class="h-px flex-1 bg-ink/10" aria-hidden="true" />
+          </h2>
+          <div data-grid class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {section.certs.map((cert) => <CertificateCard cert={cert} />)}
+          </div>
+        </section>
+      ))
+    }
 
     <p id="empty" hidden class="py-16 text-center text-muted">
-      No certificates match your search. Try another word or category.
+      No certificates match your search. Try another word.
     </p>
   </main>
 
@@ -105,11 +140,17 @@ const lastUpdated = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'l
     box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--cat) 35%, white);
     transition: background-color 150ms, color 150ms;
     cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .chip:disabled {
+    opacity: 0.4;
+    cursor: default;
   }
   .chip:hover {
     background: color-mix(in oklab, var(--cat) 12%, white);
   }
-  .chip[aria-pressed='true'] {
+  .chip[aria-current='true'] {
     /* darkened so white text stays readable on the lighter sage shades */
     background: color-mix(in oklab, var(--cat) 80%, black);
     color: white;

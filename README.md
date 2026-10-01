@@ -7,10 +7,11 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
 ## Features
 
 - Card grid of certificates with previews of images (PNG/JPG/SVG) and PDFs (first page turned into an image at build time)
-- Filter by category, search by title/issuer/skill, sort by featured, newest, oldest or A–Z
+- Certificates grouped into sections: ★ Featured first, then one per category
+- Sticky category bar: click to jump to a section; the highlight follows as you scroll
+- Search by title/issuer/skill and sort by newest, oldest or A–Z (within each section)
 - Detail view with issuer, dates, credential ID, skills and a **Verify** button
 - Shareable links to a single certificate, e.g. `…/#sample-java-basic`
-- ★ Featured certificates shown first
 - Expired certificates are flagged automatically
 - Build-time checks catch mistakes in the data file (typos, missing files, bad dates)
 

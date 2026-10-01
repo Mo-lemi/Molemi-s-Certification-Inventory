@@ -24,13 +24,13 @@ const searchText = [cert.title, cert.issuer, category.label, cert.credentialId, 
   data-title={cert.title.toLowerCase()}
   data-featured={String(cert.featured)}
   style={`--cat: ${category.color}`}
-  class="group flex flex-col overflow-hidden rounded-3xl bg-white text-left shadow-sm ring-1 ring-ink/5 transition duration-200 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+  class="group flex flex-col overflow-hidden rounded-3xl bg-white text-left shadow-sm ring-1 ring-ink/5 transition duration-200 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-accent"
 >
   <span class="relative block aspect-[1.414] overflow-hidden cat-tint">
     <Preview cert={cert} size="card" />
     {
       cert.featured && (
-        <span class="absolute top-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold text-terracotta shadow-sm">
+        <span class="absolute top-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold text-accent shadow-sm">
           ★ Featured
         </span>
       )
@@ -43,7 +43,7 @@ const searchText = [cert.title, cert.issuer, category.label, cert.credentialId, 
         Expired
       </span>
     </span>
-    <span class="font-display text-lg leading-snug group-hover:text-terracotta">{cert.title}</span>
+    <span class="font-display text-lg leading-snug group-hover:text-accent">{cert.title}</span>
     <span class="mt-auto text-sm text-muted">{cert.issuer} · {formatDate(cert.dateEarned)}</span>
   </span>
 </button>

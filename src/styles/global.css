@@ -1,11 +1,12 @@
 @import 'tailwindcss';
 
+/* Monochromatic sage theme: every colour is a shade of warm sage green. */
 @theme {
-  --color-cream: #fff8f0;
-  --color-sand: #f6e8d8;
-  --color-ink: #3b2c28;
-  --color-muted: #7a6660;
-  --color-terracotta: #d4664a;
+  --color-cream: #f5f4ec; /* page background */
+  --color-sand: #e3e8d8; /* header background, skill tags */
+  --color-ink: #2e3a2f; /* main text */
+  --color-muted: #687262; /* secondary text */
+  --color-accent: #5a7856; /* buttons, highlights */
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Nunito', system-ui, sans-serif;
@@ -29,6 +30,6 @@ body {
 }
 
 dialog::backdrop {
-  background: rgb(59 44 40 / 0.55);
+  background: rgb(46 58 47 / 0.55);
   backdrop-filter: blur(2px);
 }

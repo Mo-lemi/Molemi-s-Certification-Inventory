@@ -1,10 +1,19 @@
 {
   "name": "Molemi Molokoane",
-  "tagline": "Software Engineering Student",
+  "tagline": "Final Year Software Engineering Student at WeThinkCode_",
+  "highlights": [
+    "Python",
+    "Java",
+    "AI Fundamentals",
+    "DataCamp Certified Data Engineer",
+    "Google for Startups",
+    "AI/ML Enthusiast",
+    "Data Enthusiast"
+  ],
   "bio": "Every certificate I've earned on my learning journey, from technical skills to soft skills, all in one place.",
-  "photo": "",
+  "photo": "profile.jpg",
   "links": {
-    "linkedin": "",
+    "linkedin": "https://www.linkedin.com/in/molemi-molokoane/",
     "github": "https://github.com/Mo-lemi",
     "email": ""
   }

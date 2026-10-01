@@ -8,7 +8,7 @@ interface Props {
 
 const { cert } = Astro.props;
 const category = getCategory(cert.category);
-const searchText = [cert.title, cert.issuer, category.label, cert.credentialId, ...cert.skills]
+const searchText = [cert.title, cert.issuer, category.label, cert.credentialId, cert.description, ...cert.skills]
   .filter(Boolean)
   .join(' ')
   .toLowerCase();

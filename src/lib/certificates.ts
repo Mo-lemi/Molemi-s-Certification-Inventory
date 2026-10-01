@@ -12,6 +12,8 @@ export interface Category {
 export interface Certificate {
   id: string;
   title: string;
+  /** Optional: what I did or learnt, shown in the detail view. */
+  description: string | null;
   issuer: string;
   category: string;
   /** ISO date, e.g. "2025-08-14" */
@@ -97,5 +99,10 @@ function validate(certs: Certificate[]): Certificate[] {
 }
 
 export const certificates: Certificate[] = validate(
-  rawCertificates.map((c) => ({ ...c, skills: c.skills ?? [], featured: c.featured ?? false })) as Certificate[],
+  rawCertificates.map((c) => ({
+    ...c,
+    description: c.description ?? null,
+    skills: c.skills ?? [],
+    featured: c.featured ?? false,
+  })) as Certificate[],
 );

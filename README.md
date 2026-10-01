@@ -34,6 +34,7 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
    {
      "id": "hackerrank-java-basic",
      "title": "Java (Basic)",
+     "description": null,
      "issuer": "HackerRank",
      "category": "technical",
      "dateEarned": "2025-08-14",
@@ -50,6 +51,7 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
    | --- | --- | --- |
    | `id` | yes | Unique, lowercase-with-dashes. Used in share links. |
    | `title`, `issuer` | yes | |
+   | `description` | no | What you did or learnt, e.g. what you built at a hackathon. Shown in the detail view and searchable. `null` if none |
    | `category` | yes | Must match an `id` in [`src/data/categories.json`](src/data/categories.json) |
    | `dateEarned` | yes | `YYYY-MM-DD` |
    | `expiryDate` | no | `YYYY-MM-DD` or `null` |

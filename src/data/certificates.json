@@ -2,6 +2,7 @@
   {
     "id": "hackerrank-orchestrate-sep-2026",
     "title": "Orchestrate, September 2026 (Rank #719 of 3,062)",
+    "description": "I ranked #719 out of 3,062 participants globally in the HackerRank Orchestrate competition. I designed, built and deployed an autonomous AI agent, evaluated across practical execution benchmarks, task orchestration and prompt-driven decision-making workflows.",
     "issuer": "HackerRank",
     "category": "hackathon",
     "dateEarned": "2026-09-16",
@@ -11,14 +12,16 @@
     "file": "certificates/hackerrank-orchestrate-sep-2026.jpg",
     "skills": [
       "AI Agents",
-      "Deployment",
-      "Problem Solving"
+      "Task Orchestration",
+      "Prompt Engineering",
+      "Deployment"
     ],
     "featured": true
   },
   {
     "id": "datacamp-data-engineer",
     "title": "Data Engineer Certification",
+    "description": null,
     "issuer": "DataCamp",
     "category": "technical",
     "dateEarned": "2026-08-25",
@@ -38,6 +41,7 @@
   {
     "id": "fnb-app-academy-full-stack-development",
     "title": "Certificate in Full Stack Development (FNB App Academy 2025)",
+    "description": null,
     "issuer": "IT Varsity",
     "category": "technical",
     "dateEarned": "2025-07-20",
@@ -59,6 +63,7 @@
   {
     "id": "wethinkcode-work-readiness-programme",
     "title": "Work-Readiness Programme",
+    "description": null,
     "issuer": "WeThinkCode_",
     "category": "work-readiness",
     "dateEarned": "2026-10-01",
@@ -76,6 +81,7 @@
   {
     "id": "entelect-hack-it-2026",
     "title": "Hack<IT> 2026",
+    "description": "I solved the Root Cause Analysis ecosystem simulation challenge during the Entelect Hack<IT> 2026 hackathon. I engineered discrete-tick planting schedules to satisfy dynamic unlock trees and optimise ecological diversity (entropy) and plant longevity across constrained grid environments, finishing 60th on the leaderboard.",
     "issuer": "Entelect",
     "category": "hackathon",
     "dateEarned": "2026-09-12",
@@ -84,15 +90,17 @@
     "verifyUrl": null,
     "file": "certificates/entelect-hack-it-2026.jpg",
     "skills": [
-      "Problem Solving",
-      "Teamwork",
-      "Rapid Prototyping"
+      "Simulation",
+      "Optimisation",
+      "Scheduling Algorithms",
+      "Problem Solving"
     ],
     "featured": false
   },
   {
     "id": "hackerrank-sql-basic",
     "title": "SQL (Basic)",
+    "description": null,
     "issuer": "HackerRank",
     "category": "technical",
     "dateEarned": "2026-09-09",
@@ -110,6 +118,7 @@
   {
     "id": "wethinkcode-idc-sef-programme",
     "title": "Certificate of Service: IDC SEF Programme",
+    "description": null,
     "issuer": "WeThinkCode_",
     "category": "work-readiness",
     "dateEarned": "2026-08-31",
@@ -126,6 +135,7 @@
   {
     "id": "hackerrank-java-basic",
     "title": "Java (Basic)",
+    "description": null,
     "issuer": "HackerRank",
     "category": "technical",
     "dateEarned": "2026-08-23",
@@ -143,6 +153,7 @@
   {
     "id": "entelect-university-cup-2026",
     "title": "University Cup 2026",
+    "description": "I participated in the Entelect University Cup 2026 algorithmic simulation challenge, \"Age of Enteland\". We designed and programmed a deterministic decision-making engine to optimise economic planning, graph traversal, resource pipelines and multi-tier infrastructure construction within a fixed tick budget.",
     "issuer": "Entelect",
     "category": "hackathon",
     "dateEarned": "2026-08-22",
@@ -151,15 +162,18 @@
     "verifyUrl": null,
     "file": "certificates/entelect-university-cup-2026.jpg",
     "skills": [
-      "Problem Solving",
-      "Teamwork",
-      "Algorithms"
+      "Algorithms",
+      "Graph Traversal",
+      "Simulation",
+      "Optimisation",
+      "Teamwork"
     ],
     "featured": false
   },
   {
     "id": "datacamp-ai-fundamentals",
     "title": "AI Fundamentals Certification",
+    "description": null,
     "issuer": "DataCamp",
     "category": "ai",
     "dateEarned": "2026-08-19",
@@ -178,6 +192,7 @@
   {
     "id": "datacamp-understanding-artificial-intelligence",
     "title": "Understanding Artificial Intelligence",
+    "description": null,
     "issuer": "DataCamp",
     "category": "ai",
     "dateEarned": "2026-08-19",
@@ -194,6 +209,7 @@
   {
     "id": "datacamp-understanding-chatgpt",
     "title": "Understanding ChatGPT",
+    "description": null,
     "issuer": "DataCamp",
     "category": "ai",
     "dateEarned": "2026-08-17",
@@ -211,6 +227,7 @@
   {
     "id": "girlcode-hackathon-2026",
     "title": "GirlCode Hackathon 2026",
+    "description": "I participated in the GirlCode Hackathon 2026, collaborating with a team to build a working prototype in 30 hours.",
     "issuer": "GirlCode",
     "category": "hackathon",
     "dateEarned": "2026-08-15",
@@ -219,15 +236,16 @@
     "verifyUrl": null,
     "file": "certificates/girlcode-hackathon-2026.jpg",
     "skills": [
-      "Problem Solving",
       "Teamwork",
-      "Rapid Prototyping"
+      "Rapid Prototyping",
+      "Problem Solving"
     ],
     "featured": false
   },
   {
     "id": "datacamp-understanding-cloud-computing",
     "title": "Understanding Cloud Computing",
+    "description": null,
     "issuer": "DataCamp",
     "category": "technical",
     "dateEarned": "2026-08-07",
@@ -244,6 +262,7 @@
   {
     "id": "datacamp-building-ai-agents-with-google-adk",
     "title": "Building AI Agents with Google ADK",
+    "description": null,
     "issuer": "DataCamp",
     "category": "ai",
     "dateEarned": "2026-07-27",
@@ -261,6 +280,7 @@
   {
     "id": "hackerrank-python-basic",
     "title": "Python (Basic)",
+    "description": null,
     "issuer": "HackerRank",
     "category": "technical",
     "dateEarned": "2026-07-25",
@@ -277,6 +297,7 @@
   {
     "id": "google-ai-for-research-and-insights",
     "title": "AI for Research and Insights",
+    "description": null,
     "issuer": "Google (via Coursera)",
     "category": "ai",
     "dateEarned": "2026-07-21",
@@ -294,6 +315,7 @@
   {
     "id": "google-ai-for-brainstorming-and-planning",
     "title": "AI for Brainstorming and Planning",
+    "description": null,
     "issuer": "Google (via Coursera)",
     "category": "ai",
     "dateEarned": "2026-07-18",
@@ -311,6 +333,7 @@
   {
     "id": "datacamp-introduction-to-ai-for-work",
     "title": "Introduction to AI for Work",
+    "description": null,
     "issuer": "DataCamp",
     "category": "ai",
     "dateEarned": "2026-07-07",
@@ -328,6 +351,7 @@
   {
     "id": "wethinkcode-genai-for-software-engineers",
     "title": "GenAI Course for Software Engineers",
+    "description": null,
     "issuer": "WeThinkCode_",
     "category": "ai",
     "dateEarned": "2026-06-19",
@@ -345,6 +369,7 @@
   {
     "id": "google-ai-fundamentals",
     "title": "AI Fundamentals",
+    "description": null,
     "issuer": "Google (via Coursera)",
     "category": "ai",
     "dateEarned": "2026-06-08",
@@ -362,6 +387,7 @@
   {
     "id": "google-for-startups-prompt-to-prototype",
     "title": "Startup School: Prompt to Prototype",
+    "description": "A two-week intensive programme designed to help founders move from \"prompt and pray\" AI usage to building functional, AI-first products, with an emphasis on rapid experimentation, iterative prototyping and building with Google's AI ecosystem. I learnt to understand what AI can do well today rather than banking on idealised future versions of the technology, and that instead of building comprehensive software, we should focus on specific high-value functionality.",
     "issuer": "Google for Startups",
     "category": "ai",
     "dateEarned": "2025-12-09",
@@ -370,7 +396,8 @@
     "verifyUrl": null,
     "file": "certificates/google-for-startups-prompt-to-prototype.pdf",
     "skills": [
-      "Prototyping",
+      "AI-First Product Development",
+      "Rapid Prototyping",
       "Generative AI",
       "Entrepreneurship"
     ],

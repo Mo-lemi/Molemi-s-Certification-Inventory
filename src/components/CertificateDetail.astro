@@ -1,0 +1,95 @@
+---
+import Preview from './Preview.astro';
+import { formatDate, getCategory, withBase, type Certificate } from '../lib/certificates';
+
+interface Props {
+  cert: Certificate;
+}
+
+const { cert } = Astro.props;
+const category = getCategory(cert.category);
+---
+
+<!-- A <template> is not rendered; the dialog script copies it in when the card is clicked. -->
+<template id={`detail-${cert.id}`}>
+  <div class="grid gap-6 md:grid-cols-[3fr_2fr]" style={`--cat: ${category.color}`}>
+    <div class="overflow-hidden rounded-2xl ring-1 ring-ink/10 cat-tint">
+      <Preview cert={cert} size="full" />
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-wrap gap-2">
+        <span class="rounded-full px-2.5 py-0.5 text-xs font-bold cat-tint cat-text">{category.label}</span>
+        {cert.featured && <span class="rounded-full bg-terracotta/10 px-2.5 py-0.5 text-xs font-bold text-terracotta">★ Featured</span>}
+      </div>
+      <h2 class="font-display text-2xl leading-tight sm:text-3xl" data-dialog-title>{cert.title}</h2>
+      <p class="font-semibold text-muted">{cert.issuer}</p>
+
+      <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+        <dt class="font-bold">Earned</dt>
+        <dd>{formatDate(cert.dateEarned)}</dd>
+        {
+          cert.expiryDate && (
+            <>
+              <dt class="font-bold">Expires</dt>
+              <dd>
+                {formatDate(cert.expiryDate)}
+                <span data-expired-flag data-expiry={cert.expiryDate} hidden class="ml-1 rounded-full bg-ink/10 px-2 py-0.5 text-xs font-bold text-muted">
+                  Expired
+                </span>
+              </dd>
+            </>
+          )
+        }
+        {
+          cert.credentialId && (
+            <>
+              <dt class="font-bold">Credential ID</dt>
+              <dd class="font-mono break-all">{cert.credentialId}</dd>
+            </>
+          )
+        }
+      </dl>
+
+      {
+        cert.skills.length > 0 && (
+          <div>
+            <p class="mb-2 text-sm font-bold">Skills</p>
+            <ul class="flex flex-wrap gap-1.5">
+              {cert.skills.map((skill) => (
+                <li class="rounded-full bg-sand px-2.5 py-1 text-xs font-semibold">{skill}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      <div class="mt-auto flex flex-wrap gap-2 pt-2">
+        {
+          cert.verifyUrl && (
+            <a
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full bg-terracotta px-5 py-2 text-sm font-bold text-white shadow-sm transition hover:brightness-110"
+            >
+              Verify credential ↗
+            </a>
+          )
+        }
+        {
+          cert.file && (
+            <a
+              href={withBase(cert.file)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full bg-white px-5 py-2 text-sm font-bold shadow-sm ring-1 ring-ink/15 transition hover:bg-sand"
+            >
+              Open full certificate ↗
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</template>

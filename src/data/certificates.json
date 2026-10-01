@@ -1,0 +1,67 @@
+[
+  {
+    "id": "sample-java-basic",
+    "title": "Java (Basic)",
+    "issuer": "HackerRank",
+    "category": "technical",
+    "dateEarned": "2025-08-14",
+    "expiryDate": null,
+    "credentialId": "SAMPLE-0001",
+    "verifyUrl": "https://www.hackerrank.com/skills-verification",
+    "file": "certificates/sample-java-basic.svg",
+    "skills": ["Java", "OOP", "Problem Solving"],
+    "featured": true
+  },
+  {
+    "id": "sample-sql-basic",
+    "title": "SQL (Basic)",
+    "issuer": "HackerRank",
+    "category": "technical",
+    "dateEarned": "2025-09-02",
+    "expiryDate": null,
+    "credentialId": "SAMPLE-0002",
+    "verifyUrl": "https://www.hackerrank.com/skills-verification",
+    "file": "certificates/sample-sql-basic.pdf",
+    "skills": ["SQL", "Databases"],
+    "featured": false
+  },
+  {
+    "id": "sample-intro-to-ai",
+    "title": "Introduction to Artificial Intelligence",
+    "issuer": "Sample Academy",
+    "category": "ai",
+    "dateEarned": "2026-03-20",
+    "expiryDate": null,
+    "credentialId": "SAMPLE-0003",
+    "verifyUrl": null,
+    "file": "certificates/sample-intro-to-ai.svg",
+    "skills": ["Machine Learning", "Prompting", "AI Ethics"],
+    "featured": true
+  },
+  {
+    "id": "sample-work-readiness",
+    "title": "Work Readiness Programme",
+    "issuer": "Sample Institute",
+    "category": "work-readiness",
+    "dateEarned": "2026-01-15",
+    "expiryDate": "2026-06-30",
+    "credentialId": null,
+    "verifyUrl": "https://example.com",
+    "file": null,
+    "skills": ["CV Writing", "Interview Skills"],
+    "featured": false
+  },
+  {
+    "id": "sample-communication",
+    "title": "Effective Communication",
+    "issuer": "Sample Learning",
+    "category": "soft-skills",
+    "dateEarned": "2025-06-05",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/sample-communication.svg",
+    "skills": ["Communication", "Teamwork"],
+    "featured": false
+  }
+]

@@ -1,0 +1,49 @@
+---
+import Preview from './Preview.astro';
+import { formatDate, getCategory, type Certificate } from '../lib/certificates';
+
+interface Props {
+  cert: Certificate;
+}
+
+const { cert } = Astro.props;
+const category = getCategory(cert.category);
+const searchText = [cert.title, cert.issuer, category.label, cert.credentialId, ...cert.skills]
+  .filter(Boolean)
+  .join(' ')
+  .toLowerCase();
+---
+
+<button
+  type="button"
+  data-card
+  data-id={cert.id}
+  data-category={cert.category}
+  data-search={searchText}
+  data-date={cert.dateEarned}
+  data-title={cert.title.toLowerCase()}
+  data-featured={String(cert.featured)}
+  style={`--cat: ${category.color}`}
+  class="group flex flex-col overflow-hidden rounded-3xl bg-white text-left shadow-sm ring-1 ring-ink/5 transition duration-200 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+>
+  <span class="relative block aspect-[1.414] overflow-hidden cat-tint">
+    <Preview cert={cert} size="card" />
+    {
+      cert.featured && (
+        <span class="absolute top-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold text-terracotta shadow-sm">
+          ★ Featured
+        </span>
+      )
+    }
+  </span>
+  <span class="flex flex-1 flex-col gap-2 p-5">
+    <span class="flex flex-wrap items-center gap-2">
+      <span class="rounded-full px-2.5 py-0.5 text-xs font-bold cat-tint cat-text">{category.label}</span>
+      <span data-expired-flag data-expiry={cert.expiryDate} hidden class="rounded-full bg-ink/10 px-2.5 py-0.5 text-xs font-bold text-muted">
+        Expired
+      </span>
+    </span>
+    <span class="font-display text-lg leading-snug group-hover:text-terracotta">{cert.title}</span>
+    <span class="mt-auto text-sm text-muted">{cert.issuer} · {formatDate(cert.dateEarned)}</span>
+  </span>
+</button>

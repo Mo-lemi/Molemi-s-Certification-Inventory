@@ -1,0 +1,6 @@
+[
+  { "id": "technical", "label": "Technical Skills", "color": "#2A9D8F" },
+  { "id": "ai", "label": "AI", "color": "#E07A5F" },
+  { "id": "work-readiness", "label": "Work Readiness", "color": "#E9A23B" },
+  { "id": "soft-skills", "label": "Soft Skills", "color": "#6A994E" }
+]

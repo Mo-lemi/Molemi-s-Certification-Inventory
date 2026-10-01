@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CertificateCard from '../components/CertificateCard.astro';
+import CertificateDetail from '../components/CertificateDetail.astro';
+import profile from '../data/profile.json';
+import { categories, certificates } from '../lib/certificates';
+
+// Default order: featured first, then newest. The browser script re-sorts when the visitor changes it.
+const sorted = [...certificates].sort(
+  (a, b) => Number(b.featured) - Number(a.featured) || b.dateEarned.localeCompare(a.dateEarned),
+);
+
+const countFor = (id: string) => certificates.filter((c) => c.category === id).length;
+const usedCategories = categories.filter((c) => countFor(c.id) > 0);
+const lastUpdated = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+---
+
+<Layout title={`${profile.name} | Certificates`} description={`${profile.name}: ${profile.tagline}. ${profile.bio}`}>
+  <Header />
+
+  <main class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <section aria-label="Filter certificates" class="mb-8 flex flex-col gap-4">
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Category">
+        <button type="button" data-filter="all" aria-pressed="true" class="chip" style="--cat: #3b2c28">
+          All <span class="opacity-60">{certificates.length}</span>
+        </button>
+        {
+          usedCategories.map((cat) => (
+            <button type="button" data-filter={cat.id} aria-pressed="false" class="chip" style={`--cat: ${cat.color}`}>
+              {cat.label} <span class="opacity-60">{countFor(cat.id)}</span>
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <label class="relative flex-1">
+          <span class="sr-only">Search certificates</span>
+          <input
+            id="search"
+            type="search"
+            placeholder="Search by title, issuer or skill…"
+            class="w-full rounded-full bg-white px-5 py-2.5 shadow-sm ring-1 ring-ink/10 outline-none placeholder:text-muted focus:ring-2 focus:ring-terracotta"
+          />
+        </label>
+        <label class="flex items-center gap-2 text-sm font-semibold">
+          Sort
+          <select id="sort" class="rounded-full bg-white px-4 py-2.5 shadow-sm ring-1 ring-ink/10 outline-none focus:ring-2 focus:ring-terracotta">
+            <option value="featured">Featured first</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="title">A–Z</option>
+          </select>
+        </label>
+      </div>
+
+      <p id="result-count" class="text-sm text-muted" aria-live="polite">
+        Showing {certificates.length} of {certificates.length} certificates
+      </p>
+    </section>
+
+    <div id="grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {sorted.map((cert) => <CertificateCard cert={cert} />)}
+    </div>
+
+    <p id="empty" hidden class="py-16 text-center text-muted">
+      No certificates match your search. Try another word or category.
+    </p>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-muted">
+    Last updated {lastUpdated} · Built with Astro by {profile.name}
+  </footer>
+
+  {certificates.map((cert) => <CertificateDetail cert={cert} />)}
+
+  <dialog
+    id="cert-dialog"
+    aria-labelledby="dialog-heading"
+    class="m-auto w-[min(64rem,calc(100%-2rem))] max-h-[calc(100dvh-2rem)] rounded-3xl bg-cream p-0 text-ink shadow-2xl"
+  >
+    <div class="sticky top-0 z-10 flex justify-end p-3">
+      <button
+        type="button"
+        data-close
+        aria-label="Close"
+        class="grid size-10 place-items-center rounded-full bg-white text-xl shadow-sm ring-1 ring-ink/10 hover:bg-sand focus-visible:outline-2 focus-visible:outline-terracotta"
+      >
+        ×
+      </button>
+    </div>
+    <div id="dialog-body" class="px-5 pb-6 sm:px-8 sm:pb-8"></div>
+  </dialog>
+</Layout>
+
+<style>
+  .chip {
+    border-radius: 9999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: white;
+    color: color-mix(in oklab, var(--cat) 80%, black);
+    box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--cat) 35%, white);
+    transition: background-color 150ms, color 150ms;
+    cursor: pointer;
+  }
+  .chip:hover {
+    background: color-mix(in oklab, var(--cat) 12%, white);
+  }
+  .chip[aria-pressed='true'] {
+    background: var(--cat);
+    color: white;
+    box-shadow: none;
+  }
+</style>
+
+<script>
+  import { initGallery } from '../scripts/gallery';
+  initGallery();
+</script>

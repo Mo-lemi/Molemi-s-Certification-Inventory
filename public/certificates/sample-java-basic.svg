@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1414" height="1000" viewBox="0 0 1414 1000">
+  <rect width="1414" height="1000" fill="#fffdf9"/>
+  <rect x="30" y="30" width="1354" height="940" fill="none" stroke="#2A9D8F" stroke-width="10" rx="18"/>
+  <rect x="55" y="55" width="1304" height="890" fill="none" stroke="#2A9D8F" stroke-opacity="0.35" stroke-width="3" rx="12"/>
+  <text x="707" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="44" letter-spacing="10" fill="#2A9D8F">CERTIFICATE OF COMPLETION</text>
+  <text x="707" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#7a6660">This certifies that</text>
+  <text x="707" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="78" fill="#3b2c28">Molemi Molokoane</text>
+  <text x="707" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#7a6660">has successfully completed</text>
+  <text x="707" y="610" text-anchor="middle" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#2A9D8F">Java (Basic)</text>
+  <text x="707" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#3b2c28">HackerRank · August 2025</text>
+  <text x="707" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" letter-spacing="8" fill="#c0392b" opacity="0.7">SAMPLE · REPLACE WITH YOUR REAL CERTIFICATE</text>
+</svg>

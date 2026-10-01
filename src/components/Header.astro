@@ -1,0 +1,61 @@
+---
+import profile from '../data/profile.json';
+import { withBase } from '../lib/certificates';
+
+const initials = profile.name
+  .split(' ')
+  .map((part) => part[0])
+  .join('')
+  .slice(0, 2)
+  .toUpperCase();
+
+const links = [
+  { label: 'LinkedIn', href: profile.links.linkedin },
+  { label: 'GitHub', href: profile.links.github },
+  { label: 'Email', href: profile.links.email && `mailto:${profile.links.email}` },
+].filter((link) => link.href);
+---
+
+<header class="relative overflow-hidden bg-sand">
+  <!-- soft decorative blobs -->
+  <div class="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full bg-[#E07A5F]/20 blur-2xl"></div>
+  <div class="pointer-events-none absolute -bottom-28 -left-10 size-72 rounded-full bg-[#E9A23B]/20 blur-2xl"></div>
+
+  <div class="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-14 text-center sm:flex-row sm:px-6 sm:text-left">
+    {
+      profile.photo ? (
+        <img
+          src={withBase(profile.photo)}
+          alt={profile.name}
+          class="size-28 shrink-0 rounded-full object-cover shadow-md ring-4 ring-white"
+        />
+      ) : (
+        <div class="grid size-28 shrink-0 place-items-center rounded-full bg-terracotta font-display text-4xl text-white shadow-md ring-4 ring-white">
+          {initials}
+        </div>
+      )
+    }
+    <div class="flex flex-col gap-2">
+      <p class="text-sm font-bold tracking-widest text-terracotta uppercase">Certificates</p>
+      <h1 class="font-display text-4xl leading-tight sm:text-5xl">{profile.name}</h1>
+      <p class="text-lg font-semibold">{profile.tagline}</p>
+      <p class="max-w-xl text-muted">{profile.bio}</p>
+      {
+        links.length > 0 && (
+          <nav class="mt-2 flex flex-wrap justify-center gap-2 sm:justify-start" aria-label="Contact links">
+            {links.map((link) => (
+              <a
+                href={link.href}
+                target={link.label === 'Email' ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                class="rounded-full bg-white px-4 py-1.5 text-sm font-bold shadow-sm ring-1 ring-ink/10 transition hover:bg-terracotta hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        )
+      }
+    </div>
+  </div>
+</header>

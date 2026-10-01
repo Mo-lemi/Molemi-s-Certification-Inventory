@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #fff8f0;
+  --color-sand: #f6e8d8;
+  --color-ink: #3b2c28;
+  --color-muted: #7a6660;
+  --color-terracotta: #d4664a;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Nunito', system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Each card/chip sets --cat to its category colour; these mix in soft tints. */
+.cat-tint {
+  background-color: color-mix(in oklab, var(--cat) 14%, white);
+}
+.cat-text {
+  color: color-mix(in oklab, var(--cat) 80%, black);
+}
+
+dialog::backdrop {
+  background: rgb(59 44 40 / 0.55);
+  backdrop-filter: blur(2px);
+}

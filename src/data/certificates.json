@@ -24,7 +24,7 @@
     "dateEarned": "2026-08-25",
     "expiryDate": null,
     "credentialId": "DE0014294051959",
-    "verifyUrl": null,
+    "verifyUrl": "https://www.datacamp.com/certificate/DE0014294051959",
     "file": "certificates/datacamp-data-engineer.pdf",
     "skills": [
       "Data Engineering",
@@ -199,7 +199,7 @@
     "dateEarned": "2026-08-17",
     "expiryDate": null,
     "credentialId": "48766680",
-    "verifyUrl": null,
+    "verifyUrl": "https://www.datacamp.com/completed/statement-of-accomplishment/course/b44e3963bc2717ea7c7509e932d32c4e4b782fad",
     "file": "certificates/datacamp-understanding-chatgpt.pdf",
     "skills": [
       "ChatGPT",
@@ -233,7 +233,7 @@
     "dateEarned": "2026-08-07",
     "expiryDate": null,
     "credentialId": "49171358",
-    "verifyUrl": null,
+    "verifyUrl": "https://www.datacamp.com/completed/statement-of-accomplishment/course/2bcdaa907ff149d0387b5dceebb8a167114f2299",
     "file": "certificates/datacamp-understanding-cloud-computing.pdf",
     "skills": [
       "Cloud Computing",
@@ -249,7 +249,7 @@
     "dateEarned": "2026-07-27",
     "expiryDate": null,
     "credentialId": "48996588",
-    "verifyUrl": null,
+    "verifyUrl": "https://www.datacamp.com/completed/statement-of-accomplishment/course/a3f6835072a67a53852c32da3148812ddd472d5d",
     "file": "certificates/datacamp-building-ai-agents-with-google-adk.pdf",
     "skills": [
       "AI Agents",
@@ -316,7 +316,7 @@
     "dateEarned": "2026-07-07",
     "expiryDate": null,
     "credentialId": "48052059",
-    "verifyUrl": null,
+    "verifyUrl": "https://www.datacamp.com/completed/statement-of-accomplishment/course/36d197e4bd96d94c7bb06a26fc2a76d85ea40907",
     "file": "certificates/datacamp-introduction-to-ai-for-work.pdf",
     "skills": [
       "Generative AI",

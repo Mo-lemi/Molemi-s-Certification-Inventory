@@ -25,8 +25,6 @@ export interface Certificate {
   featured: boolean;
 }
 
-export type FileKind = 'pdf' | 'image' | 'none';
-
 export const categories: Category[] = rawCategories;
 
 const categoryById = new Map(categories.map((c) => [c.id, c]));
@@ -35,16 +33,23 @@ export function getCategory(id: string): Category {
   return categoryById.get(id)!;
 }
 
-export function fileKind(file: string | null): FileKind {
-  if (!file) return 'none';
-  return file.toLowerCase().endsWith('.pdf') ? 'pdf' : 'image';
-}
-
 /** Prefixes a /public path with the site's base path (needed for GitHub Pages). */
 export function withBase(p: string): string {
   if (/^https?:\/\//.test(p)) return p;
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   return `${base}/${p.replace(/^\//, '')}`;
+}
+
+/** Path (inside /public) of the image shown for a certificate file: PDFs use their generated preview. */
+function previewPath(file: string): string {
+  return file.toLowerCase().endsWith('.pdf')
+    ? file.replace(/^certificates\//, 'previews/').replace(/\.pdf$/i, '.jpg')
+    : file;
+}
+
+/** URL of the image to display for a certificate, or null for link-only certificates. */
+export function previewImage(file: string | null): string | null {
+  return file ? withBase(previewPath(file)) : null;
 }
 
 export function formatDate(iso: string): string {
@@ -76,8 +81,12 @@ function validate(certs: Certificate[]): Certificate[] {
     }
     if (c.dateEarned && !ISO_DATE.test(c.dateEarned)) errors.push(`${where}: dateEarned must look like 2025-08-14`);
     if (c.expiryDate && !ISO_DATE.test(c.expiryDate)) errors.push(`${where}: expiryDate must look like 2025-08-14`);
-    if (c.file && !fs.existsSync(path.join(process.cwd(), 'public', c.file))) {
+    if (c.file && !c.file.startsWith('certificates/')) {
+      errors.push(`${where}: "file" should look like "certificates/my-certificate.pdf" (forward slashes, no "public/")`);
+    } else if (c.file && !fs.existsSync(path.join(process.cwd(), 'public', c.file))) {
       errors.push(`${where}: file not found at public/${c.file}`);
+    } else if (c.file && !fs.existsSync(path.join(process.cwd(), 'public', previewPath(c.file)))) {
+      errors.push(`${where}: preview image missing; run "npm run build" (it generates PDF previews first)`);
     }
   }
 

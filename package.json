@@ -4,12 +4,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/generate-previews.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-previews.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^1.0.10",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "pdfjs-dist": "^6.3.289",

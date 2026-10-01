@@ -1,5 +1,5 @@
 ---
-import { fileKind, withBase, type Certificate } from '../lib/certificates';
+import { previewImage, type Certificate } from '../lib/certificates';
 
 interface Props {
   cert: Certificate;
@@ -8,28 +8,15 @@ interface Props {
 }
 
 const { cert, size } = Astro.props;
-const kind = fileKind(cert.file);
-const src = cert.file ? withBase(cert.file) : '';
+// PDFs are shown through a JPG generated at build time (scripts/generate-previews.mjs).
+const src = previewImage(cert.file);
 const fit = size === 'card' ? 'size-full object-cover object-top' : 'w-full h-auto';
 ---
 
 {
-  kind === 'image' && (
+  src ? (
     <img src={src} alt={`${cert.title} certificate`} loading="lazy" decoding="async" class={`block ${fit}`} />
-  )
-}
-{
-  kind === 'pdf' && (
-    <span class="relative block size-full">
-      <span class="absolute inset-0 grid place-items-center text-sm font-bold cat-text" data-pdf-loading>
-        Loading PDF…
-      </span>
-      <canvas data-pdf={src} class={`relative block ${fit}`} aria-label={`${cert.title} certificate (PDF)`} />
-    </span>
-  )
-}
-{
-  kind === 'none' && (
+  ) : (
     <span class={`flex flex-col items-center justify-center gap-1 p-6 text-center ${size === 'card' ? 'size-full' : 'aspect-[1.414] w-full'}`}>
       <span class="font-display text-2xl cat-text">{cert.issuer}</span>
       <span class="text-sm font-semibold text-muted">Online credential</span>

@@ -1,5 +1,3 @@
-import { renderPdf, renderPdfsWhenVisible } from './pdf-preview';
-
 type SortMode = 'featured' | 'newest' | 'oldest' | 'title';
 
 /** Shows the "Expired" badge on anything whose expiry date has passed (checked in the visitor's browser, so it's always current). */
@@ -68,7 +66,6 @@ export function initGallery(): void {
     dialogBody.querySelector('[data-dialog-title]')?.setAttribute('id', 'dialog-heading');
     markExpired(dialogBody);
     dialog.showModal();
-    dialogBody.querySelectorAll<HTMLCanvasElement>('canvas[data-pdf]').forEach(renderPdf);
     // Put the id in the address bar so a specific certificate can be shared, e.g. …/#java-basic
     history.replaceState(null, '', `#${id}`);
   }
@@ -87,7 +84,6 @@ export function initGallery(): void {
 
   // ---- start up ----
   markExpired(document);
-  renderPdfsWhenVisible(grid);
   const linkedId = decodeURIComponent(location.hash.slice(1));
   if (linkedId) openCertificate(linkedId);
 }

@@ -1,82 +1,379 @@
 [
   {
-    "id": "sample-java-basic",
-    "title": "Java (Basic)",
+    "id": "hackerrank-orchestrate-sep-2026",
+    "title": "Orchestrate, September 2026 (Rank #719 of 3,062)",
     "issuer": "HackerRank",
-    "category": "technical",
-    "dateEarned": "2025-08-14",
+    "category": "hackathon",
+    "dateEarned": "2026-09-16",
     "expiryDate": null,
-    "credentialId": "SAMPLE-0001",
-    "verifyUrl": "https://www.hackerrank.com/skills-verification",
-    "file": "certificates/sample-java-basic.svg",
-    "skills": ["Java", "OOP", "Problem Solving"],
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/hackerrank-orchestrate-sep-2026.jpg",
+    "skills": [
+      "AI Agents",
+      "Deployment",
+      "Problem Solving"
+    ],
     "featured": true
   },
   {
-    "id": "sample-sql-basic",
+    "id": "datacamp-data-engineer",
+    "title": "Data Engineer Certification",
+    "issuer": "DataCamp",
+    "category": "technical",
+    "dateEarned": "2026-08-25",
+    "expiryDate": null,
+    "credentialId": "DE0014294051959",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-data-engineer.pdf",
+    "skills": [
+      "Data Engineering",
+      "SQL",
+      "Python",
+      "ETL",
+      "Data Pipelines"
+    ],
+    "featured": true
+  },
+  {
+    "id": "fnb-app-academy-full-stack-development",
+    "title": "Certificate in Full Stack Development (FNB App Academy 2025)",
+    "issuer": "IT Varsity",
+    "category": "technical",
+    "dateEarned": "2025-07-20",
+    "expiryDate": null,
+    "credentialId": "A0TYAA072025",
+    "verifyUrl": null,
+    "file": "certificates/fnb-app-academy-full-stack-development.pdf",
+    "skills": [
+      "Full Stack Development",
+      "HTML",
+      "APIs",
+      "Backend Development",
+      "UX Design",
+      "Git & GitHub",
+      "Design Thinking"
+    ],
+    "featured": true
+  },
+  {
+    "id": "wethinkcode-work-readiness-programme",
+    "title": "Work-Readiness Programme",
+    "issuer": "WeThinkCode_",
+    "category": "work-readiness",
+    "dateEarned": "2026-10-01",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/wethinkcode-work-readiness-programme.jpg",
+    "skills": [
+      "Work Readiness",
+      "Professional Skills",
+      "Communication"
+    ],
+    "featured": false
+  },
+  {
+    "id": "entelect-hack-it-2026",
+    "title": "Hack<IT> 2026",
+    "issuer": "Entelect",
+    "category": "hackathon",
+    "dateEarned": "2026-09-12",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/entelect-hack-it-2026.jpg",
+    "skills": [
+      "Problem Solving",
+      "Teamwork",
+      "Rapid Prototyping"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hackerrank-sql-basic",
     "title": "SQL (Basic)",
     "issuer": "HackerRank",
     "category": "technical",
-    "dateEarned": "2025-09-02",
+    "dateEarned": "2026-09-09",
     "expiryDate": null,
-    "credentialId": "SAMPLE-0002",
-    "verifyUrl": "https://www.hackerrank.com/skills-verification",
-    "file": "certificates/sample-sql-basic.pdf",
-    "skills": ["SQL", "Databases"],
+    "credentialId": "812263BE14A8",
+    "verifyUrl": "https://www.hackerrank.com/certificates/812263be14a8",
+    "file": "certificates/hackerrank-sql-basic.jpg",
+    "skills": [
+      "SQL",
+      "Databases",
+      "Queries"
+    ],
     "featured": false
   },
   {
-    "id": "sample-intro-to-ai",
-    "title": "Introduction to Artificial Intelligence",
-    "issuer": "Sample Academy",
-    "category": "ai",
-    "dateEarned": "2026-03-20",
-    "expiryDate": null,
-    "credentialId": "SAMPLE-0003",
-    "verifyUrl": null,
-    "file": "certificates/sample-intro-to-ai.svg",
-    "skills": ["Machine Learning", "Prompting", "AI Ethics"],
-    "featured": true
-  },
-  {
-    "id": "sample-work-readiness",
-    "title": "Work Readiness Programme",
-    "issuer": "Sample Institute",
+    "id": "wethinkcode-idc-sef-programme",
+    "title": "Certificate of Service: IDC SEF Programme",
+    "issuer": "WeThinkCode_",
     "category": "work-readiness",
-    "dateEarned": "2026-01-15",
-    "expiryDate": "2026-06-30",
-    "credentialId": null,
-    "verifyUrl": "https://example.com",
-    "file": null,
-    "skills": ["CV Writing", "Interview Skills"],
-    "featured": false
-  },
-  {
-    "id": "sample-communication",
-    "title": "Effective Communication",
-    "issuer": "Sample Learning",
-    "category": "soft-skills",
-    "dateEarned": "2025-06-05",
+    "dateEarned": "2026-08-31",
     "expiryDate": null,
     "credentialId": null,
     "verifyUrl": null,
-    "file": "certificates/sample-communication.svg",
-    "skills": ["Communication", "Teamwork"],
+    "file": "certificates/wethinkcode-idc-sef-programme.pdf",
+    "skills": [
+      "Service",
+      "Collaboration"
+    ],
     "featured": false
   },
-
   {
-  "id": "hackerrank-java-basic",
-  "title": "Girlcode Hackathon 2026",
-  "issuer": "GirlCode",
-  "category": "hackathon",
-  "dateEarned": "2026-08-14",
-  "expiryDate": null,
-  "credentialId": "ABC123XYZ",
-  "verifyUrl": "https://www.hackerrank.com/certificates/abc123xyz",
-  "file": "public\\certificates\\Girlcode Hackathon 2026.png",
-  "skills": ["Java", "OOP"],
-  "featured": false
-}
-
+    "id": "hackerrank-java-basic",
+    "title": "Java (Basic)",
+    "issuer": "HackerRank",
+    "category": "technical",
+    "dateEarned": "2026-08-23",
+    "expiryDate": null,
+    "credentialId": "997FF019CE00",
+    "verifyUrl": "https://www.hackerrank.com/certificates/997ff019ce00",
+    "file": "certificates/hackerrank-java-basic.jpg",
+    "skills": [
+      "Java",
+      "OOP",
+      "Problem Solving"
+    ],
+    "featured": false
+  },
+  {
+    "id": "entelect-university-cup-2026",
+    "title": "University Cup 2026",
+    "issuer": "Entelect",
+    "category": "hackathon",
+    "dateEarned": "2026-08-22",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/entelect-university-cup-2026.jpg",
+    "skills": [
+      "Problem Solving",
+      "Teamwork",
+      "Algorithms"
+    ],
+    "featured": false
+  },
+  {
+    "id": "datacamp-ai-fundamentals",
+    "title": "AI Fundamentals Certification",
+    "issuer": "DataCamp",
+    "category": "ai",
+    "dateEarned": "2026-08-19",
+    "expiryDate": null,
+    "credentialId": "AIF0029156508094",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-ai-fundamentals.pdf",
+    "skills": [
+      "AI Concepts",
+      "Machine Learning",
+      "Generative AI",
+      "AI Ethics"
+    ],
+    "featured": false
+  },
+  {
+    "id": "datacamp-understanding-artificial-intelligence",
+    "title": "Understanding Artificial Intelligence",
+    "issuer": "DataCamp",
+    "category": "ai",
+    "dateEarned": "2026-08-19",
+    "expiryDate": null,
+    "credentialId": "UAI3464828477",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-understanding-artificial-intelligence.pdf",
+    "skills": [
+      "AI Concepts",
+      "Machine Learning"
+    ],
+    "featured": false
+  },
+  {
+    "id": "datacamp-understanding-chatgpt",
+    "title": "Understanding ChatGPT",
+    "issuer": "DataCamp",
+    "category": "ai",
+    "dateEarned": "2026-08-17",
+    "expiryDate": null,
+    "credentialId": "48766680",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-understanding-chatgpt.pdf",
+    "skills": [
+      "ChatGPT",
+      "LLMs",
+      "Prompt Engineering"
+    ],
+    "featured": false
+  },
+  {
+    "id": "girlcode-hackathon-2026",
+    "title": "GirlCode Hackathon 2026",
+    "issuer": "GirlCode",
+    "category": "hackathon",
+    "dateEarned": "2026-08-15",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/girlcode-hackathon-2026.jpg",
+    "skills": [
+      "Problem Solving",
+      "Teamwork",
+      "Rapid Prototyping"
+    ],
+    "featured": false
+  },
+  {
+    "id": "datacamp-understanding-cloud-computing",
+    "title": "Understanding Cloud Computing",
+    "issuer": "DataCamp",
+    "category": "technical",
+    "dateEarned": "2026-08-07",
+    "expiryDate": null,
+    "credentialId": "49171358",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-understanding-cloud-computing.pdf",
+    "skills": [
+      "Cloud Computing",
+      "Cloud Services"
+    ],
+    "featured": false
+  },
+  {
+    "id": "datacamp-building-ai-agents-with-google-adk",
+    "title": "Building AI Agents with Google ADK",
+    "issuer": "DataCamp",
+    "category": "ai",
+    "dateEarned": "2026-07-27",
+    "expiryDate": null,
+    "credentialId": "48996588",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-building-ai-agents-with-google-adk.pdf",
+    "skills": [
+      "AI Agents",
+      "Google ADK",
+      "Python"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hackerrank-python-basic",
+    "title": "Python (Basic)",
+    "issuer": "HackerRank",
+    "category": "technical",
+    "dateEarned": "2026-07-25",
+    "expiryDate": null,
+    "credentialId": "CA6AAB5BE034",
+    "verifyUrl": "https://www.hackerrank.com/certificates/ca6aab5be034",
+    "file": "certificates/hackerrank-python-basic.jpg",
+    "skills": [
+      "Python",
+      "Problem Solving"
+    ],
+    "featured": false
+  },
+  {
+    "id": "google-ai-for-research-and-insights",
+    "title": "AI for Research and Insights",
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "dateEarned": "2026-07-21",
+    "expiryDate": null,
+    "credentialId": "PSM908A0QLVE",
+    "verifyUrl": "https://coursera.org/verify/PSM908A0QLVE",
+    "file": "certificates/google-ai-for-research-and-insights.pdf",
+    "skills": [
+      "Generative AI",
+      "Research",
+      "Data Analysis"
+    ],
+    "featured": false
+  },
+  {
+    "id": "google-ai-for-brainstorming-and-planning",
+    "title": "AI for Brainstorming and Planning",
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "dateEarned": "2026-07-18",
+    "expiryDate": null,
+    "credentialId": "MTMBLRDDUIXE",
+    "verifyUrl": "https://coursera.org/verify/MTMBLRDDUIXE",
+    "file": "certificates/google-ai-for-brainstorming-and-planning.pdf",
+    "skills": [
+      "Generative AI",
+      "Ideation",
+      "Project Planning"
+    ],
+    "featured": false
+  },
+  {
+    "id": "datacamp-introduction-to-ai-for-work",
+    "title": "Introduction to AI for Work",
+    "issuer": "DataCamp",
+    "category": "ai",
+    "dateEarned": "2026-07-07",
+    "expiryDate": null,
+    "credentialId": "48052059",
+    "verifyUrl": null,
+    "file": "certificates/datacamp-introduction-to-ai-for-work.pdf",
+    "skills": [
+      "Generative AI",
+      "Prompting",
+      "Productivity"
+    ],
+    "featured": false
+  },
+  {
+    "id": "wethinkcode-genai-for-software-engineers",
+    "title": "GenAI Course for Software Engineers",
+    "issuer": "WeThinkCode_",
+    "category": "ai",
+    "dateEarned": "2026-06-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/wethinkcode-genai-for-software-engineers.pdf",
+    "skills": [
+      "Generative AI",
+      "Software Engineering",
+      "AI-Assisted Development"
+    ],
+    "featured": false
+  },
+  {
+    "id": "google-ai-fundamentals",
+    "title": "AI Fundamentals",
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "dateEarned": "2026-06-08",
+    "expiryDate": null,
+    "credentialId": "7RJNMMAGD03F",
+    "verifyUrl": "https://coursera.org/verify/7RJNMMAGD03F",
+    "file": "certificates/google-ai-fundamentals.pdf",
+    "skills": [
+      "Generative AI",
+      "Prompt Engineering",
+      "Responsible AI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "google-for-startups-prompt-to-prototype",
+    "title": "Startup School: Prompt to Prototype",
+    "issuer": "Google for Startups",
+    "category": "ai",
+    "dateEarned": "2025-12-09",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/google-for-startups-prompt-to-prototype.pdf",
+    "skills": [
+      "Prototyping",
+      "Generative AI",
+      "Entrepreneurship"
+    ],
+    "featured": false
+  }
 ]

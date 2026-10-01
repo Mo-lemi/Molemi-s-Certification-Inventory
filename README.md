@@ -6,7 +6,7 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
 
 ## Features
 
-- Card grid of certificates with previews of images (PNG/JPG/SVG) and PDFs (first page rendered in the browser with PDF.js)
+- Card grid of certificates with previews of images (PNG/JPG/SVG) and PDFs (first page turned into an image at build time)
 - Filter by category, search by title/issuer/skill, sort by featured, newest, oldest or A–Z
 - Detail view with issuer, dates, credential ID, skills and a **Verify** button
 - Shareable links to a single certificate, e.g. `…/#sample-java-basic`
@@ -21,7 +21,7 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
 | [Astro](https://astro.build) | Static site framework (components + build) |
 | TypeScript | Typed data and browser scripts |
 | [Tailwind CSS](https://tailwindcss.com) | Styling |
-| [PDF.js](https://mozilla.github.io/pdf.js/) | PDF previews |
+| [PDF.js](https://mozilla.github.io/pdf.js/) + [@napi-rs/canvas](https://github.com/Brooooooklyn/canvas) | Generating PDF preview images at build time |
 | GitHub Actions + GitHub Pages | Automatic free hosting |
 
 ## Adding a certificate
@@ -57,7 +57,9 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
    | `skills` | no | List of tags, searchable |
    | `featured` | no | `true` to pin it to the top with a ★ |
 
-3. Run `npm run dev` to check it, then commit and push. The site redeploys automatically.
+3. Run `npm run build` (or `npm run dev`) to check it. This also creates the preview image for PDFs. Then commit and push; the site redeploys automatically.
+
+> **Tip:** keep files small, since recruiters may open the site on their phones. Big scans (several MB) are better exported as a JPG around 2000px wide.
 
 **Adding a category:** add `{ "id": "...", "label": "...", "color": "#hex" }` to `src/data/categories.json`.
 
@@ -81,21 +83,25 @@ One-time setup: on GitHub go to **Settings → Pages → Build and deployment �
 ## Project structure
 
 ```
+originals/             untouched original files (git-ignored, never published)
+scripts/
+  generate-previews.mjs  makes a JPG preview of each PDF (runs before dev/build)
 public/
   certificates/        certificate files (PDF, PNG, JPG, SVG)
+  previews/            generated PDF previews (git-ignored)
   favicon.svg
 src/
   data/                certificates.json, categories.json, profile.json  ← edit these
   lib/certificates.ts  loads + validates the data, shared helpers
   components/          Header, CertificateCard, CertificateDetail, Preview
-  scripts/             browser code: filtering/sorting/dialog, PDF previews
+  scripts/             browser code: filtering, sorting, detail dialog
   pages/index.astro    the page itself
   styles/global.css    theme colours and fonts
 ```
 
 ## Roadmap
 
-- [ ] Replace the sample certificates with real ones
+- [x] Replace the sample certificates with real ones
 - [ ] Add profile photo, LinkedIn and email
 - [ ] More filters (issuer, skill, year) as the collection grows
 - [ ] Upload form / admin area (app-like version)

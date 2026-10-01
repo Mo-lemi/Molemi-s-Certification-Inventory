@@ -20,8 +20,8 @@ What I learn while building my certification inventory: concepts, problems I hit
 | Concept | Where it shows up | In my own words |
 | --- | --- | --- |
 | **Static site** | The whole project: `npm run build` turns everything into plain HTML/CSS/JS in `dist/` | |
-| **Separating data from code** | `src/data/*.json`: adding a certificate means editing data, not HTML | |
-| **Components** | `src/components/*.astro`: one card design reused for every certificate | |
+| **Separating data from code** | `src/data/*.json`: adding a certificate means editing data, not HTML |I can manually upload my certificates in the certificates folder touching any code.|
+| **Components** | `src/components/*.astro`: one card design reused for every certificate | I want to make the cards different, like bounce or move when hovered on. |
 | **Props** | `<CertificateCard cert={cert} />` passes data into a component | |
 | **TypeScript interfaces** | `interface Certificate` in `src/lib/certificates.ts` | |
 | **Validation** | `validate()` throws an error at build time if the data has mistakes | |
@@ -32,7 +32,7 @@ What I learn while building my certification inventory: concepts, problems I hit
 | **`<template>` element** | `CertificateDetail.astro`: HTML that's stored but not shown until copied into the dialog | |
 | **Lazy loading** | `IntersectionObserver` only renders a PDF when its card scrolls into view | |
 | **Base path** | `base` in `astro.config.mjs` + `withBase()`: GitHub Pages serves the site from `/Molemi-s-Certification-Inventory/`, not `/` | |
-| **CI/CD** | `.github/workflows/deploy.yml` builds and deploys on every push | |
+| **CI/CD** | `.github/workflows/deploy.yml` builds and deploys on every push | I am now very familiar with CI/CD. I enjoy this part of the project. |
 
 ### Bug I hit: PDF preview unavailable
 - **Symptom:** the SQL certificate showed "PDF preview unavailable".
@@ -48,7 +48,7 @@ What I learn while building my certification inventory: concepts, problems I hit
 ### Next steps
 - [ ] Replace the sample certificates with my real ones
 - [ ] Add my photo, LinkedIn and email to `src/data/profile.json`
-- [ ] Turn on GitHub Pages and share the link
+- [X] Turn on GitHub Pages and share the link
 
 ---
 

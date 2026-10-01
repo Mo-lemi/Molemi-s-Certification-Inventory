@@ -64,4 +64,19 @@
     "skills": ["Communication", "Teamwork"],
     "featured": false
   }
+
+  {
+  "id": "hackerrank-java-basic",
+  "title": "Girlcode Hackathon 2026",
+  "issuer": "GirlCode",
+  "category": "hackathon",
+  "dateEarned": "2026-08-14",
+  "expiryDate": null,
+  "credentialId": "ABC123XYZ",
+  "verifyUrl": "https://www.hackerrank.com/certificates/abc123xyz",
+  "file": "public\\certificates\\Girlcode Hackathon 2026.png",
+  "skills": ["Java", "OOP"],
+  "featured": false
+}
+
 ]

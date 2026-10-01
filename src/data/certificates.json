@@ -165,7 +165,7 @@
     "dateEarned": "2026-08-19",
     "expiryDate": null,
     "credentialId": "AIF0029156508094",
-    "verifyUrl": null,
+    "verifyUrl": "https://www.datacamp.com/skill-verification/AIF0029156508094",
     "file": "certificates/datacamp-ai-fundamentals.pdf",
     "skills": [
       "AI Concepts",

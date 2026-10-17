@@ -106,7 +106,7 @@
     "dateEarned": "2025-01-22",
     "expiryDate": null,
     "credentialId": "PLAN-3C5E2007BBB0",
-    "verifyUrl": null,
+    "verifyUrl": "https://skills.yourlearning.ibm.com/certificate/PLAN-3C5E2007BBB0",
     "file": "certificates/ibm-skillsbuild-wethinkcode-pre-application.png",
     "skills": [
       "Programming Fundamentals",

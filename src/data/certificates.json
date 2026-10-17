@@ -79,6 +79,42 @@
     "featured": false
   },
   {
+    "id": "ibm-skillsbuild-relational-database-management-systems",
+    "title": "Relational Database Management Systems",
+    "description": null,
+    "issuer": "IBM SkillsBuild",
+    "category": "technical",
+    "dateEarned": "2026-10-10",
+    "expiryDate": null,
+    "credentialId": "ALM-COURSE_3824993",
+    "verifyUrl": "https://skills.yourlearning.ibm.com/certificate/ALM-COURSE_3824993",
+    "file": "certificates/ibm-skillsbuild-relational-database-management-systems.png",
+    "skills": [
+      "Databases",
+      "RDBMS",
+      "SQL",
+      "Data Modelling"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ibm-skillsbuild-wethinkcode-pre-application",
+    "title": "WeThinkCode_ Pre-Application",
+    "description": null,
+    "issuer": "IBM SkillsBuild",
+    "category": "work-readiness",
+    "dateEarned": "2025-01-22",
+    "expiryDate": null,
+    "credentialId": "PLAN-3C5E2007BBB0",
+    "verifyUrl": null,
+    "file": "certificates/ibm-skillsbuild-wethinkcode-pre-application.png",
+    "skills": [
+      "Programming Fundamentals",
+      "Problem Solving"
+    ],
+    "featured": false
+  },
+  {
     "id": "entelect-hack-it-2026",
     "title": "Hack<IT> 2026",
     "description": "I solved the Root Cause Analysis ecosystem simulation challenge during the Entelect Hack<IT> 2026 hackathon. I engineered discrete-tick planting schedules to satisfy dynamic unlock trees and optimise ecological diversity (entropy) and plant longevity across constrained grid environments, finishing 60th on the leaderboard.",

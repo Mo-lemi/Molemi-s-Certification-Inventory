@@ -64,6 +64,16 @@ export function previewImage(file: string | null): string | null {
   return file ? withBase(previewPath(file)) : null;
 }
 
+/** Path (inside /public) of the small thumbnail shown in a certificate's row. */
+function thumbPath(file: string): string {
+  return file.replace(/^certificates\//, 'thumbs/').replace(/\.[^.]+$/, '.jpg');
+}
+
+/** URL of a certificate's row thumbnail, or null for link-only certificates. */
+export function thumbImage(file: string | null): string | null {
+  return file ? withBase(thumbPath(file)) : null;
+}
+
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
@@ -96,6 +106,8 @@ function validate(certs: Certificate[]): Certificate[] {
       errors.push(`${where}: file not found at public/${c.file}`);
     } else if (c.file && !fs.existsSync(path.join(process.cwd(), 'public', previewPath(c.file)))) {
       errors.push(`${where}: preview image missing; run "npm run build" (it generates PDF previews first)`);
+    } else if (c.file && !fs.existsSync(path.join(process.cwd(), 'public', thumbPath(c.file)))) {
+      errors.push(`${where}: thumbnail missing; run "npm run build" (it generates thumbnails first)`);
     }
   }
 

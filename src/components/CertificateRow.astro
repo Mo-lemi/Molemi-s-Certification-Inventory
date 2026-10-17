@@ -1,6 +1,6 @@
 ---
 import Preview from './Preview.astro';
-import { getCategory, recordNumber, withBase, type Certificate } from '../lib/certificates';
+import { getCategory, recordNumber, thumbImage, withBase, type Certificate } from '../lib/certificates';
 
 interface Props {
   cert: Certificate;
@@ -10,6 +10,7 @@ const { cert } = Astro.props;
 const domain = getCategory(cert.category).label;
 const number = recordNumber(cert.id);
 const detailId = `detail-${cert.id}`;
+const thumb = thumbImage(cert.file);
 const searchText = [cert.title, cert.issuer, domain, number, cert.credentialId, cert.description, ...cert.skills]
   .filter(Boolean)
   .join(' ')
@@ -28,12 +29,23 @@ const searchText = [cert.title, cert.issuer, domain, number, cert.credentialId, 
   <tr class="border-b border-rule align-top">
     <td class="hidden py-3 pr-4 font-mono text-xs leading-6 text-muted md:table-cell">{number}</td>
     <td class="py-3 pr-4">
-      <button type="button" data-toggle aria-expanded="false" aria-controls={detailId} class="group flex w-full gap-2 text-left">
+      <button type="button" data-toggle aria-expanded="false" aria-controls={detailId} class="group flex w-full gap-3 text-left">
         <span data-toggle-icon class="w-3 shrink-0 font-mono leading-6 text-muted" aria-hidden="true">+</span>
+        {
+          thumb && (
+            <img
+              src={thumb}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="mt-0.5 aspect-[1.414] w-14 shrink-0 self-start border border-rule bg-white object-cover object-top sm:w-20"
+            />
+          )
+        }
         <span>
           <span class="block leading-6 font-medium underline-offset-4 group-hover:underline">{cert.title}</span>
           <span class="block text-muted">
-            {cert.issuer}<span class="font-mono text-xs sm:hidden"> · {cert.dateEarned}</span>
+            {cert.issuer}<span class="font-mono text-xs whitespace-nowrap sm:hidden"> · {cert.dateEarned}</span>
           </span>
         </span>
       </button>

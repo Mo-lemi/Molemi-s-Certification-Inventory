@@ -7,7 +7,7 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
 ## Features
 
 - A table of certificates, grouped by how each was earned: assessed credentials, hackathons and competitions, and courses and programmes
-- Each row has a record number (`#CERT-001` is the oldest), the domain, the date and links to the verify page and the file
+- Each row has a record number (`#CERT-001` is the oldest), a small thumbnail of the certificate, the domain, the date and links to the verify page and the file
 - Click a row to open it in place: description, credential ID, skills and a preview of the certificate (PDFs get a preview image made at build time)
 - Search by title/issuer/skill and sort by newest, oldest or A–Z (within each section)
 - Shareable links to a single certificate, e.g. `…/#hackerrank-java-basic`
@@ -87,10 +87,11 @@ One-time setup: on GitHub go to **Settings → Pages → Build and deployment �
 ```
 originals/             untouched original files (git-ignored, never published)
 scripts/
-  generate-previews.mjs  makes a JPG preview of each PDF (runs before dev/build)
+  generate-previews.mjs  makes a JPG preview of each PDF and a small thumbnail of every certificate (runs before dev/build)
 public/
   certificates/        certificate files (PDF, PNG, JPG, SVG)
   previews/            generated PDF previews (git-ignored)
+  thumbs/              generated row thumbnails (git-ignored)
   favicon.svg
 src/
   data/                certificates.json, categories.json, types.json, profile.json  ← edit these

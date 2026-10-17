@@ -3,23 +3,11 @@ import { previewImage, type Certificate } from '../lib/certificates';
 
 interface Props {
   cert: Certificate;
-  /** "card" fills a fixed-ratio thumbnail; "full" shows the whole certificate. */
-  size: 'card' | 'full';
 }
 
-const { cert, size } = Astro.props;
+const { cert } = Astro.props;
 // PDFs are shown through a JPG generated at build time (scripts/generate-previews.mjs).
 const src = previewImage(cert.file);
-const fit = size === 'card' ? 'size-full object-cover object-top' : 'w-full h-auto';
 ---
 
-{
-  src ? (
-    <img src={src} alt={`${cert.title} certificate`} loading="lazy" decoding="async" class={`block ${fit}`} />
-  ) : (
-    <span class={`flex flex-col items-center justify-center gap-1 p-6 text-center ${size === 'card' ? 'size-full' : 'aspect-[1.414] w-full'}`}>
-      <span class="font-display text-2xl cat-text">{cert.issuer}</span>
-      <span class="text-sm font-semibold text-muted">Online credential</span>
-    </span>
-  )
-}
+{src && <img src={src} alt={`${cert.title} certificate`} loading="lazy" decoding="async" class="block h-auto w-full" />}

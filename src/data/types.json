@@ -1,0 +1,5 @@
+[
+  { "id": "assessed", "label": "Assessed credentials", "note": "Passed a timed exam, skills test or graded project." },
+  { "id": "competition", "label": "Hackathons and competitions", "note": "Built and submitted under time pressure, ranked against other entrants." },
+  { "id": "course", "label": "Courses and programmes", "note": "Completed coursework, programmes and workshops." }
+]

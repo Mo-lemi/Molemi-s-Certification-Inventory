@@ -1,7 +1,6 @@
 [
-  { "id": "technical", "label": "Technical Skills", "color": "#3F3F3F" },
-  { "id": "ai", "label": "AI", "color": "#5C5C5C" },
-  { "id": "hackathon", "label": "Hackathons", "color": "#4D4D4D" },
-  { "id": "work-readiness", "label": "Work Readiness", "color": "#727272" },
-  { "id": "soft-skills", "label": "Soft Skills", "color": "#8A8A8A" }
+  { "id": "technical", "label": "Technical" },
+  { "id": "ai", "label": "AI" },
+  { "id": "work-readiness", "label": "Work readiness" },
+  { "id": "soft-skills", "label": "Soft skills" }
 ]

@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 
-/* Minimal grey theme: every colour is a neutral grey. */
+/* Minimal grey theme: neutral greys, flat 1px rules, no shadows or rounded cards. */
 @theme {
-  --color-cream: #f5f5f5; /* page background */
-  --color-sand: #e7e7e7; /* header background, skill tags */
-  --color-ink: #222222; /* main text */
+  --color-paper: #f5f5f5; /* page background */
+  --color-ink: #1f1f1f; /* main text, section rules */
   --color-muted: #6b6b6b; /* secondary text */
-  --color-accent: #4a4a4a; /* buttons, highlights */
+  --color-rule: #d4d4d4; /* hairline borders */
 
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-sans: 'Nunito', system-ui, sans-serif;
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 }
 
 :root {
@@ -17,19 +17,38 @@
 }
 
 body {
-  background-color: var(--color-cream);
+  background-color: var(--color-paper);
   color: var(--color-ink);
 }
 
-/* Each card/chip sets --cat to its category colour; these mix in soft tints. */
-.cat-tint {
-  background-color: color-mix(in oklab, var(--cat) 14%, white);
+/* Plain underlined text links. */
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 4px;
 }
-.cat-text {
-  color: color-mix(in oklab, var(--cat) 80%, black);
+.link:hover {
+  text-decoration-color: var(--color-ink);
 }
 
-dialog::backdrop {
-  background: rgb(34 34 34 / 0.55);
-  backdrop-filter: blur(2px);
+/* Search box and sort menu. */
+.field {
+  border: 1px solid var(--color-rule);
+  background: white;
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-ink);
+  outline: none;
+}
+.field::placeholder {
+  color: var(--color-muted);
+}
+.field:focus {
+  border-color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
 }

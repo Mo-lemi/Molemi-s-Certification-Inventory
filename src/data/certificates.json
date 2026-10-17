@@ -4,7 +4,8 @@
     "title": "Orchestrate, September 2026 (Rank #719 of 3,062)",
     "description": "I ranked #719 out of 3,062 participants globally in the HackerRank Orchestrate competition. I designed, built and deployed an autonomous AI agent, evaluated across practical execution benchmarks, task orchestration and prompt-driven decision-making workflows.",
     "issuer": "HackerRank",
-    "category": "hackathon",
+    "category": "ai",
+    "type": "competition",
     "dateEarned": "2026-09-16",
     "expiryDate": null,
     "credentialId": null,
@@ -15,8 +16,7 @@
       "Task Orchestration",
       "Prompt Engineering",
       "Deployment"
-    ],
-    "featured": true
+    ]
   },
   {
     "id": "datacamp-data-engineer",
@@ -24,6 +24,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "technical",
+    "type": "assessed",
     "dateEarned": "2026-08-25",
     "expiryDate": null,
     "credentialId": "DE0014294051959",
@@ -35,8 +36,7 @@
       "Python",
       "ETL",
       "Data Pipelines"
-    ],
-    "featured": true
+    ]
   },
   {
     "id": "fnb-app-academy-full-stack-development",
@@ -44,6 +44,7 @@
     "description": null,
     "issuer": "IT Varsity",
     "category": "technical",
+    "type": "assessed",
     "dateEarned": "2025-07-20",
     "expiryDate": null,
     "credentialId": "A0TYAA072025",
@@ -57,8 +58,7 @@
       "UX Design",
       "Git & GitHub",
       "Design Thinking"
-    ],
-    "featured": true
+    ]
   },
   {
     "id": "wethinkcode-work-readiness-programme",
@@ -66,6 +66,7 @@
     "description": null,
     "issuer": "WeThinkCode_",
     "category": "work-readiness",
+    "type": "course",
     "dateEarned": "2026-10-01",
     "expiryDate": null,
     "credentialId": null,
@@ -75,8 +76,7 @@
       "Work Readiness",
       "Professional Skills",
       "Communication"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "ibm-skillsbuild-relational-database-management-systems",
@@ -84,6 +84,7 @@
     "description": null,
     "issuer": "IBM SkillsBuild",
     "category": "technical",
+    "type": "course",
     "dateEarned": "2026-10-10",
     "expiryDate": null,
     "credentialId": "ALM-COURSE_3824993",
@@ -94,8 +95,7 @@
       "RDBMS",
       "SQL",
       "Data Modelling"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "ibm-skillsbuild-wethinkcode-pre-application",
@@ -103,6 +103,7 @@
     "description": null,
     "issuer": "IBM SkillsBuild",
     "category": "work-readiness",
+    "type": "course",
     "dateEarned": "2025-01-22",
     "expiryDate": null,
     "credentialId": "PLAN-3C5E2007BBB0",
@@ -111,15 +112,15 @@
     "skills": [
       "Programming Fundamentals",
       "Problem Solving"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "entelect-hack-it-2026",
     "title": "Hack<IT> 2026",
     "description": "I solved the Root Cause Analysis ecosystem simulation challenge during the Entelect Hack<IT> 2026 hackathon. I engineered discrete-tick planting schedules to satisfy dynamic unlock trees and optimise ecological diversity (entropy) and plant longevity across constrained grid environments, finishing 60th on the leaderboard.",
     "issuer": "Entelect",
-    "category": "hackathon",
+    "category": "technical",
+    "type": "competition",
     "dateEarned": "2026-09-12",
     "expiryDate": null,
     "credentialId": null,
@@ -130,8 +131,7 @@
       "Optimisation",
       "Scheduling Algorithms",
       "Problem Solving"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "hackerrank-sql-basic",
@@ -139,6 +139,7 @@
     "description": null,
     "issuer": "HackerRank",
     "category": "technical",
+    "type": "assessed",
     "dateEarned": "2026-09-09",
     "expiryDate": null,
     "credentialId": "812263BE14A8",
@@ -148,8 +149,7 @@
       "SQL",
       "Databases",
       "Queries"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "wethinkcode-idc-sef-programme",
@@ -157,6 +157,7 @@
     "description": null,
     "issuer": "WeThinkCode_",
     "category": "work-readiness",
+    "type": "course",
     "dateEarned": "2026-08-31",
     "expiryDate": null,
     "credentialId": null,
@@ -165,8 +166,7 @@
     "skills": [
       "Service",
       "Collaboration"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "hackerrank-java-basic",
@@ -174,6 +174,7 @@
     "description": null,
     "issuer": "HackerRank",
     "category": "technical",
+    "type": "assessed",
     "dateEarned": "2026-08-23",
     "expiryDate": null,
     "credentialId": "997FF019CE00",
@@ -183,15 +184,15 @@
       "Java",
       "OOP",
       "Problem Solving"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "entelect-university-cup-2026",
     "title": "University Cup 2026",
     "description": "I participated in the Entelect University Cup 2026 algorithmic simulation challenge, \"Age of Enteland\". We designed and programmed a deterministic decision-making engine to optimise economic planning, graph traversal, resource pipelines and multi-tier infrastructure construction within a fixed tick budget.",
     "issuer": "Entelect",
-    "category": "hackathon",
+    "category": "technical",
+    "type": "competition",
     "dateEarned": "2026-08-22",
     "expiryDate": null,
     "credentialId": null,
@@ -203,8 +204,7 @@
       "Simulation",
       "Optimisation",
       "Teamwork"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "datacamp-ai-fundamentals",
@@ -212,6 +212,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "ai",
+    "type": "assessed",
     "dateEarned": "2026-08-19",
     "expiryDate": null,
     "credentialId": "AIF0029156508094",
@@ -222,8 +223,7 @@
       "Machine Learning",
       "Generative AI",
       "AI Ethics"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "datacamp-understanding-artificial-intelligence",
@@ -231,6 +231,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-08-19",
     "expiryDate": null,
     "credentialId": "UAI3464828477",
@@ -239,8 +240,7 @@
     "skills": [
       "AI Concepts",
       "Machine Learning"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "datacamp-understanding-chatgpt",
@@ -248,6 +248,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-08-17",
     "expiryDate": null,
     "credentialId": "48766680",
@@ -257,15 +258,15 @@
       "ChatGPT",
       "LLMs",
       "Prompt Engineering"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "girlcode-hackathon-2026",
     "title": "GirlCode Hackathon 2026",
     "description": "I participated in the GirlCode Hackathon 2026, collaborating with a team to build a working prototype in 30 hours.",
     "issuer": "GirlCode",
-    "category": "hackathon",
+    "category": "technical",
+    "type": "competition",
     "dateEarned": "2026-08-15",
     "expiryDate": null,
     "credentialId": null,
@@ -275,8 +276,7 @@
       "Teamwork",
       "Rapid Prototyping",
       "Problem Solving"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "datacamp-understanding-cloud-computing",
@@ -284,6 +284,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "technical",
+    "type": "course",
     "dateEarned": "2026-08-07",
     "expiryDate": null,
     "credentialId": "49171358",
@@ -292,8 +293,7 @@
     "skills": [
       "Cloud Computing",
       "Cloud Services"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "datacamp-building-ai-agents-with-google-adk",
@@ -301,6 +301,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-07-27",
     "expiryDate": null,
     "credentialId": "48996588",
@@ -310,8 +311,7 @@
       "AI Agents",
       "Google ADK",
       "Python"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "hackerrank-python-basic",
@@ -319,6 +319,7 @@
     "description": null,
     "issuer": "HackerRank",
     "category": "technical",
+    "type": "assessed",
     "dateEarned": "2026-07-25",
     "expiryDate": null,
     "credentialId": "CA6AAB5BE034",
@@ -327,8 +328,7 @@
     "skills": [
       "Python",
       "Problem Solving"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "google-ai-for-research-and-insights",
@@ -336,6 +336,7 @@
     "description": null,
     "issuer": "Google (via Coursera)",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-07-21",
     "expiryDate": null,
     "credentialId": "PSM908A0QLVE",
@@ -345,8 +346,7 @@
       "Generative AI",
       "Research",
       "Data Analysis"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "google-ai-for-brainstorming-and-planning",
@@ -354,6 +354,7 @@
     "description": null,
     "issuer": "Google (via Coursera)",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-07-18",
     "expiryDate": null,
     "credentialId": "MTMBLRDDUIXE",
@@ -363,8 +364,7 @@
       "Generative AI",
       "Ideation",
       "Project Planning"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "datacamp-introduction-to-ai-for-work",
@@ -372,6 +372,7 @@
     "description": null,
     "issuer": "DataCamp",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-07-07",
     "expiryDate": null,
     "credentialId": "48052059",
@@ -381,8 +382,7 @@
       "Generative AI",
       "Prompting",
       "Productivity"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "wethinkcode-genai-for-software-engineers",
@@ -390,6 +390,7 @@
     "description": null,
     "issuer": "WeThinkCode_",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-06-19",
     "expiryDate": null,
     "credentialId": null,
@@ -399,8 +400,7 @@
       "Generative AI",
       "Software Engineering",
       "AI-Assisted Development"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "google-ai-fundamentals",
@@ -408,6 +408,7 @@
     "description": null,
     "issuer": "Google (via Coursera)",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2026-06-08",
     "expiryDate": null,
     "credentialId": "7RJNMMAGD03F",
@@ -417,8 +418,7 @@
       "Generative AI",
       "Prompt Engineering",
       "Responsible AI"
-    ],
-    "featured": false
+    ]
   },
   {
     "id": "google-for-startups-prompt-to-prototype",
@@ -426,6 +426,7 @@
     "description": "A two-week intensive programme designed to help founders move from \"prompt and pray\" AI usage to building functional, AI-first products, with an emphasis on rapid experimentation, iterative prototyping and building with Google's AI ecosystem. I learnt to understand what AI can do well today rather than banking on idealised future versions of the technology, and that instead of building comprehensive software, we should focus on specific high-value functionality.",
     "issuer": "Google for Startups",
     "category": "ai",
+    "type": "course",
     "dateEarned": "2025-12-09",
     "expiryDate": null,
     "credentialId": null,
@@ -436,7 +437,6 @@
       "Rapid Prototyping",
       "Generative AI",
       "Entrepreneurship"
-    ],
-    "featured": false
+    ]
   }
 ]

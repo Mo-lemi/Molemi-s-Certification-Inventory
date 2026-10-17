@@ -2,11 +2,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import rawCertificates from '../data/certificates.json';
 import rawCategories from '../data/categories.json';
+import rawTypes from '../data/types.json';
 
+/** The subject a certificate is about, shown in the Domain column. */
 export interface Category {
   id: string;
   label: string;
-  color: string;
+}
+
+/** How a certificate was earned; the page has one section per type. */
+export interface CertificateType {
+  id: string;
+  label: string;
+  note: string;
 }
 
 export interface Certificate {
@@ -16,6 +24,7 @@ export interface Certificate {
   description: string | null;
   issuer: string;
   category: string;
+  type: string;
   /** ISO date, e.g. "2025-08-14" */
   dateEarned: string;
   expiryDate: string | null;
@@ -24,12 +33,13 @@ export interface Certificate {
   /** Path inside /public, e.g. "certificates/java.pdf". null for link-only certificates. */
   file: string | null;
   skills: string[];
-  featured: boolean;
 }
 
 export const categories: Category[] = rawCategories;
+export const types: CertificateType[] = rawTypes;
 
 const categoryById = new Map(categories.map((c) => [c.id, c]));
+const typeIds = new Set(types.map((t) => t.id));
 
 export function getCategory(id: string): Category {
   return categoryById.get(id)!;
@@ -54,12 +64,6 @@ export function previewImage(file: string | null): string | null {
   return file ? withBase(previewPath(file)) : null;
 }
 
-export function formatDate(iso: string): string {
-  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(
-    new Date(iso),
-  );
-}
-
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
@@ -73,13 +77,16 @@ function validate(certs: Certificate[]): Certificate[] {
 
   for (const c of certs) {
     const where = `Certificate "${c.id ?? c.title ?? '?'}"`;
-    for (const field of ['id', 'title', 'issuer', 'category', 'dateEarned'] as const) {
+    for (const field of ['id', 'title', 'issuer', 'category', 'type', 'dateEarned'] as const) {
       if (!c[field]) errors.push(`${where}: missing "${field}"`);
     }
     if (seen.has(c.id)) errors.push(`${where}: duplicate id`);
     seen.add(c.id);
     if (c.category && !categoryById.has(c.category)) {
       errors.push(`${where}: unknown category "${c.category}" (add it to src/data/categories.json)`);
+    }
+    if (c.type && !typeIds.has(c.type)) {
+      errors.push(`${where}: unknown type "${c.type}" (use one of the ids in src/data/types.json)`);
     }
     if (c.dateEarned && !ISO_DATE.test(c.dateEarned)) errors.push(`${where}: dateEarned must look like 2025-08-14`);
     if (c.expiryDate && !ISO_DATE.test(c.expiryDate)) errors.push(`${where}: expiryDate must look like 2025-08-14`);
@@ -103,6 +110,16 @@ export const certificates: Certificate[] = validate(
     ...c,
     description: c.description ?? null,
     skills: c.skills ?? [],
-    featured: c.featured ?? false,
   })) as Certificate[],
 );
+
+// Record numbers count up from the oldest certificate: #CERT-001 is the first one earned.
+const recordNumbers = new Map(
+  [...certificates]
+    .sort((a, b) => a.dateEarned.localeCompare(b.dateEarned) || a.id.localeCompare(b.id))
+    .map((c, i) => [c.id, `#CERT-${String(i + 1).padStart(3, '0')}`]),
+);
+
+export function recordNumber(id: string): string {
+  return recordNumbers.get(id)!;
+}

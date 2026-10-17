@@ -6,12 +6,11 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
 
 ## Features
 
-- Card grid of certificates with previews of images (PNG/JPG/SVG) and PDFs (first page turned into an image at build time)
-- Certificates grouped into sections: ★ Featured first, then one per category
-- Sticky category bar: click to jump to a section; the highlight follows as you scroll
+- A table of certificates, grouped by how each was earned: assessed credentials, hackathons and competitions, and courses and programmes
+- Each row has a record number (`#CERT-001` is the oldest), the domain, the date and links to the verify page and the file
+- Click a row to open it in place: description, credential ID, skills and a preview of the certificate (PDFs get a preview image made at build time)
 - Search by title/issuer/skill and sort by newest, oldest or A–Z (within each section)
-- Detail view with issuer, dates, credential ID, skills and a **Verify** button
-- Shareable links to a single certificate, e.g. `…/#sample-java-basic`
+- Shareable links to a single certificate, e.g. `…/#hackerrank-java-basic`
 - Expired certificates are flagged automatically
 - Build-time checks catch mistakes in the data file (typos, missing files, bad dates)
 
@@ -37,13 +36,13 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
      "description": null,
      "issuer": "HackerRank",
      "category": "technical",
+     "type": "assessed",
      "dateEarned": "2025-08-14",
      "expiryDate": null,
      "credentialId": "ABC123XYZ",
      "verifyUrl": "https://www.hackerrank.com/certificates/abc123xyz",
      "file": "certificates/hackerrank-java-basic.pdf",
-     "skills": ["Java", "OOP"],
-     "featured": false
+     "skills": ["Java", "OOP"]
    }
    ```
 
@@ -51,22 +50,22 @@ A public showcase of **every** certificate I've earned: technical skills, AI, wo
    | --- | --- | --- |
    | `id` | yes | Unique, lowercase-with-dashes. Used in share links. |
    | `title`, `issuer` | yes | |
-   | `description` | no | What you did or learnt, e.g. what you built at a hackathon. Shown in the detail view and searchable. `null` if none |
-   | `category` | yes | Must match an `id` in [`src/data/categories.json`](src/data/categories.json) |
+   | `description` | no | What you did or learnt, e.g. what you built at a hackathon. Shown when the row is opened and searchable. `null` if none |
+   | `category` | yes | The subject, shown in the Domain column. Must match an `id` in [`src/data/categories.json`](src/data/categories.json) |
+   | `type` | yes | How it was earned, which decides the section: `assessed`, `competition` or `course` (see [`src/data/types.json`](src/data/types.json)) |
    | `dateEarned` | yes | `YYYY-MM-DD` |
    | `expiryDate` | no | `YYYY-MM-DD` or `null` |
    | `credentialId`, `verifyUrl` | no | `null` if there isn't one |
    | `file` | no | Path inside `public/`, or `null` for link-only certificates |
-   | `skills` | no | List of tags, searchable |
-   | `featured` | no | `true` to pin it to the top with a ★ |
+   | `skills` | no | List of skills, searchable |
 
 3. Run `npm run build` (or `npm run dev`) to check it. This also creates the preview image for PDFs. Then commit and push; the site redeploys automatically.
 
 > **Tip:** keep files small, since recruiters may open the site on their phones. Big scans (several MB) are better exported as a JPG around 2000px wide.
 
-**Adding a category:** add `{ "id": "...", "label": "...", "color": "#hex" }` to `src/data/categories.json`.
+**Adding a category:** add `{ "id": "...", "label": "..." }` to `src/data/categories.json`.
 
-**Profile details** (tagline, photo, LinkedIn, email) are in [`src/data/profile.json`](src/data/profile.json). For a photo, put e.g. `profile.jpg` in `public/` and set `"photo": "profile.jpg"`.
+**Profile details** (tagline, one-line intro, photo, LinkedIn, email) are in [`src/data/profile.json`](src/data/profile.json). For a photo, put e.g. `profile.jpg` in `public/` and set `"photo": "profile.jpg"`.
 
 ## Running locally
 
@@ -94,10 +93,10 @@ public/
   previews/            generated PDF previews (git-ignored)
   favicon.svg
 src/
-  data/                certificates.json, categories.json, profile.json  ← edit these
+  data/                certificates.json, categories.json, types.json, profile.json  ← edit these
   lib/certificates.ts  loads + validates the data, shared helpers
-  components/          Header, CertificateCard, CertificateDetail, Preview
-  scripts/             browser code: filtering, sorting, detail dialog
+  components/          Header, CertificateRow, Preview
+  scripts/             browser code: searching, sorting, opening rows
   pages/index.astro    the page itself
   styles/global.css    theme colours and fonts
 ```

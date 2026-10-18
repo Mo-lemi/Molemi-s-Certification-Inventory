@@ -79,6 +79,24 @@
     ]
   },
   {
+    "id": "cisco-introduction-to-cybersecurity",
+    "title": "Introduction to Cybersecurity",
+    "description": "Covers common cyber threats, attacks and vulnerabilities, and how individuals and organisations protect against them.",
+    "issuer": "Cisco Networking Academy",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-10-17",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": "https://www.credly.com/badges/8df82081-3246-49f1-9e54-42a3b9ec7f4e/public_url",
+    "file": "certificates/cisco-introduction-to-cybersecurity.pdf",
+    "skills": [
+      "Cybersecurity",
+      "Threats and Vulnerabilities",
+      "Online Safety"
+    ]
+  },
+  {
     "id": "ibm-skillsbuild-relational-database-management-systems",
     "title": "Relational Database Management Systems",
     "description": null,

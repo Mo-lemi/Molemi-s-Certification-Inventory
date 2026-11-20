@@ -1127,7 +1127,7 @@
   {
     "id": "women-techmakers-tech-mentorship-2026-data-science",
     "title": "Tech Mentorship Program 2026: Data Science Track (Top 3 Mentee)",
-    "description": "I completed the Data Science track of a 12-week virtual mentorship programme (17 August to 20 November 2026) and was named one of the top 3 mentees in the track, placing 3rd. Mentees were chosen on attendance, assignments, mentor engagement and a final project.",
+    "description": "I completed the Data Science track of a 12-week virtual mentorship programme (17 August to 20 November 2026) and was named one of the top 3 mentees in the track, placing 3rd. Mentees were chosen on attendance, assignments, mentor engagement and a final group project, which the mentors chose me to lead. As a top 3 mentee, I was awarded an internship at CV Span, followed by continuous mentorship.",
     "issuer": "Women Techmakers Bambili and Gwarinpa",
     "category": "technical",
     "type": "assessed",
@@ -1138,7 +1138,8 @@
     "file": "certificates/women-techmakers-tech-mentorship-2026-data-science.png",
     "skills": [
       "Data Science",
-      "Final Project",
+      "Team Leadership",
+      "Group Project",
       "Mentorship"
     ]
   }

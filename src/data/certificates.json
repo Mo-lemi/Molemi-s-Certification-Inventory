@@ -1093,5 +1093,26 @@
       "Generative AI",
       "Content Creation"
     ]
+  },
+  {
+    "id": "google-ai-professional-certificate",
+    "title": "Google AI Professional Certificate",
+    "description": null,
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": "SMPJ2ATG6WRD",
+    "verifyUrl": "https://coursera.org/verify/professional-cert/SMPJ2ATG6WRD",
+    "file": "certificates/google-ai-professional-certificate.pdf",
+    "skills": [
+      "Generative AI",
+      "Prompt Engineering",
+      "Responsible AI",
+      "Data Analysis",
+      "Content Creation",
+      "App Development"
+    ]
   }
 ]

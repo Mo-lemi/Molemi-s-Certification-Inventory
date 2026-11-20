@@ -14,6 +14,8 @@ export interface Category {
 export interface CertificateType {
   id: string;
   label: string;
+  /** Optional shorter name for the tab row, e.g. "Hackathons". */
+  tabLabel?: string;
   note: string;
 }
 

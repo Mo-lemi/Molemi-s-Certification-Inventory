@@ -1,5 +1,5 @@
 [
-  { "id": "assessed", "label": "Assessed credentials", "note": "Passed a timed exam, skills test or graded project." },
-  { "id": "competition", "label": "Hackathons and competitions", "note": "Built and submitted under time pressure, ranked against other entrants." },
-  { "id": "course", "label": "Courses and programmes", "note": "Completed coursework, programmes and workshops." }
+  { "id": "assessed", "label": "Assessed credentials", "tabLabel": "Assessed", "note": "Passed a timed exam, skills test or graded project." },
+  { "id": "competition", "label": "Hackathons and competitions", "tabLabel": "Hackathons", "note": "Built and submitted under time pressure, ranked against other entrants." },
+  { "id": "course", "label": "Courses and programmes", "tabLabel": "Courses", "note": "Completed coursework, programmes and workshops." }
 ]

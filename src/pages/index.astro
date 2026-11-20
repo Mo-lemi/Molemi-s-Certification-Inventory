@@ -10,6 +10,8 @@ const newestFirst = (a: Certificate, b: Certificate) => b.dateEarned.localeCompa
 interface Tab {
   id: string;
   label: string;
+  /** Shorter name for the tab itself, so the tab row fits on one line; label is used elsewhere. */
+  tabLabel?: string;
   note: string;
   count: number;
   /** The certificates this tab shows, newest first. */
@@ -68,7 +70,7 @@ const updated = new Date().toISOString().slice(0, 10);
 <Layout title={`${profile.name} | Certificates`} description={`${profile.name}: ${profile.tagline}. ${profile.bio}`}>
   <Header />
 
-  <main class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+  <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
     <div class="mb-10 flex flex-wrap items-center gap-3">
       <label class="min-w-0 flex-1 basis-60">
         <span class="sr-only">Search records</span>
@@ -103,7 +105,7 @@ const updated = new Date().toISOString().slice(0, 10);
             tabindex={i === 0 ? 0 : -1}
             class:list={['tab', tab === firstProviderTab && 'tab-group-start']}
           >
-            {tab.label} <span data-tab-count class="font-mono text-xs text-muted">{tab.count}</span>
+            {tab.tabLabel ?? tab.label} <span data-tab-count class="font-mono text-xs text-muted">{tab.count}</span>
           </button>
         ))
       }
@@ -152,7 +154,7 @@ const updated = new Date().toISOString().slice(0, 10);
     </section>
   </main>
 
-  <footer class="mx-auto max-w-5xl border-t border-rule px-4 py-6 font-mono text-xs text-muted sm:px-6">
+  <footer class="mx-auto max-w-7xl border-t border-rule px-4 py-6 font-mono text-xs text-muted sm:px-6">
     updated {updated} · built with astro
   </footer>
 </Layout>

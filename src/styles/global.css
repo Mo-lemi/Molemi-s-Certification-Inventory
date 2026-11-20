@@ -65,16 +65,19 @@ body {
     overflow: visible;
   }
 }
+/* Tabs have no side padding, so the underline sits under the text alone and a wrapped
+   second line starts flush with the first. The gap between tabs is a right margin. */
 .tab {
   flex-shrink: 0;
   white-space: nowrap;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 0;
+  margin-right: 1.25rem;
   border-bottom: 3px solid transparent;
   color: var(--color-muted);
   font-size: 0.9375rem;
 }
-.tab:first-child {
-  padding-left: 0;
+.tab:last-child {
+  margin-right: 0;
 }
 .tab:hover {
   color: var(--color-ink);
@@ -82,12 +85,12 @@ body {
 /* A short divider between the "how it was earned" tabs and the course provider tabs. */
 .tab-group-start {
   position: relative;
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 }
 .tab-group-start::before {
   content: '';
   position: absolute;
-  left: -0.25rem;
+  left: -0.85rem;
   top: 30%;
   bottom: 30%;
   border-left: 1px solid var(--color-rule);

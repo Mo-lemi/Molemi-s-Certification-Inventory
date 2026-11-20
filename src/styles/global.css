@@ -48,6 +48,36 @@ body {
   border-color: var(--color-ink);
 }
 
+/* Horizontal tabs: the selected one sits on the section rule with a thick underline.
+   On narrow screens the row scrolls sideways, without showing a scrollbar. */
+.tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+.tab {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.5rem 0.9rem;
+  border-bottom: 3px solid transparent;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+.tab:first-child {
+  padding-left: 0;
+}
+.tab:hover {
+  color: var(--color-ink);
+}
+.tab[aria-selected='true'] {
+  color: var(--color-ink);
+  font-weight: 500;
+  border-bottom-color: var(--color-ink);
+}
+
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;

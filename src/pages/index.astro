@@ -7,10 +7,15 @@ import { certificates, types, type Certificate } from '../lib/certificates';
 
 const newestFirst = (a: Certificate, b: Certificate) => b.dateEarned.localeCompare(a.dateEarned);
 
-// One section per type (in types.json order): assessed credentials first, short courses last.
-const sections = types
-  .map((type) => ({ ...type, certs: certificates.filter((c) => c.type === type.id).sort(newestFirst) }))
-  .filter((section) => section.certs.length > 0);
+const sorted = [...certificates].sort(newestFirst);
+
+// One tab per type (in types.json order), after an "All" tab that opens first.
+const tabs = [
+  { id: 'all', label: 'All', note: 'Every credential, course and competition on record.', count: certificates.length },
+  ...types
+    .map((type) => ({ ...type, count: certificates.filter((c) => c.type === type.id).length }))
+    .filter((tab) => tab.count > 0),
+];
 
 const updated = new Date().toISOString().slice(0, 10);
 ---
@@ -37,35 +42,42 @@ const updated = new Date().toISOString().slice(0, 10);
       </p>
     </div>
 
-    {
-      sections.map((section) => (
-        <section data-section aria-labelledby={`heading-${section.id}`} class="mb-14">
-          <div class="flex items-baseline justify-between gap-4 border-b border-ink pb-2">
-            <h2 id={`heading-${section.id}`} class="font-display text-xl font-medium sm:text-2xl">
-              {section.label}
-            </h2>
-            <span class="font-mono text-xs text-muted" data-section-count>
-              {section.certs.length}
-            </span>
-          </div>
-          <p class="mt-2 mb-2 text-sm text-muted">{section.note}</p>
-          <table class="w-full border-collapse text-left text-sm">
-            <thead class="font-mono text-xs text-muted max-sm:sr-only">
-              <tr class="border-b border-rule">
-                <th scope="col" class="hidden w-24 py-2 pr-4 font-normal md:table-cell">no.</th>
-                <th scope="col" class="py-2 pr-4 font-normal">credential / issued by</th>
-                <th scope="col" class="hidden w-32 py-2 pr-4 font-normal md:table-cell">domain</th>
-                <th scope="col" class="hidden w-28 py-2 pr-4 font-normal sm:table-cell">date</th>
-                <th scope="col" class="w-16 py-2 text-right font-normal">proof</th>
-              </tr>
-            </thead>
-            {section.certs.map((cert) => <CertificateRow cert={cert} />)}
-          </table>
-        </section>
-      ))
-    }
+    <div role="tablist" aria-label="Filter by how each certificate was earned" class="tabs -mx-4 flex border-b border-ink px-4 sm:mx-0 sm:px-0">
+      {
+        tabs.map((tab, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${tab.id}`}
+            data-tab={tab.id}
+            data-note={tab.note}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls="records"
+            tabindex={i === 0 ? 0 : -1}
+            class="tab"
+          >
+            {tab.label} <span data-tab-count class="font-mono text-xs text-muted">{tab.count}</span>
+          </button>
+        ))
+      }
+    </div>
 
-    <p id="empty" hidden class="py-12 font-mono text-sm text-muted">No records found.</p>
+    <section id="records" role="tabpanel" aria-labelledby="tab-all" class="mb-14">
+      <p id="tab-note" class="mt-3 mb-2 text-sm text-muted">{tabs[0].note}</p>
+      <table class="w-full border-collapse text-left text-sm">
+        <thead class="font-mono text-xs text-muted max-sm:sr-only">
+          <tr class="border-b border-rule">
+            <th scope="col" class="hidden w-24 py-2 pr-4 font-normal md:table-cell">no.</th>
+            <th scope="col" class="py-2 pr-4 font-normal">credential / issued by</th>
+            <th scope="col" class="hidden w-32 py-2 pr-4 font-normal md:table-cell">domain</th>
+            <th scope="col" class="hidden w-28 py-2 pr-4 font-normal sm:table-cell">date</th>
+            <th scope="col" class="w-16 py-2 text-right font-normal">proof</th>
+          </tr>
+        </thead>
+        {sorted.map((cert) => <CertificateRow cert={cert} />)}
+      </table>
+      <p id="empty" hidden class="py-12 font-mono text-sm text-muted">No records found.</p>
+    </section>
   </main>
 
   <footer class="mx-auto max-w-5xl border-t border-rule px-4 py-6 font-mono text-xs text-muted sm:px-6">

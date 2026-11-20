@@ -21,6 +21,7 @@ const searchText = [cert.title, cert.issuer, domain, number, cert.credentialId, 
 <tbody
   id={cert.id}
   data-row
+  data-type={cert.type}
   data-search={searchText}
   data-date={cert.dateEarned}
   data-title={cert.title.toLowerCase()}

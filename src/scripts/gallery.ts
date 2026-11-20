@@ -16,36 +16,83 @@ const comparators: Record<SortMode, (a: HTMLElement, b: HTMLElement) => number> 
 };
 
 export function initGallery(): void {
-  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section]'));
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tab]'));
+  const panel = document.getElementById('records')!;
+  const note = document.getElementById('tab-note')!;
+  const table = panel.querySelector('table')!;
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-row]'));
   const search = document.getElementById('search') as HTMLInputElement;
   const sort = document.getElementById('sort') as HTMLSelectElement;
   const count = document.getElementById('result-count')!;
   const empty = document.getElementById('empty')!;
 
-  // ---- searching and sorting (within each section) ----
+  let activeTab = 'all';
+  const inTab = (row: HTMLElement, tab: string) => tab === 'all' || row.dataset.type === tab;
+
+  // ---- searching, sorting and tab filtering ----
   function update(): void {
     const words = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
-    let visible = 0;
+    const matches = rows.filter((row) => words.every((word) => row.dataset.search!.includes(word)));
 
-    for (const section of sections) {
-      const table = section.querySelector('table')!;
-      const sectionRows = Array.from(table.querySelectorAll<HTMLElement>('[data-row]'));
-      let shown = 0;
-      for (const row of sectionRows) {
-        row.hidden = !words.every((word) => row.dataset.search!.includes(word));
-        if (!row.hidden) shown++;
-      }
-      sectionRows.sort(comparators[sort.value as SortMode]).forEach((row) => table.append(row));
-
-      section.hidden = shown === 0;
-      section.querySelector('[data-section-count]')!.textContent = String(shown);
-      visible += shown;
+    // Each tab's count shows how many search matches it holds.
+    for (const tab of tabs) {
+      tab.querySelector('[data-tab-count]')!.textContent = String(matches.filter((row) => inTab(row, tab.dataset.tab!)).length);
     }
 
-    count.textContent = words.length ? `${visible} of ${rows.length} records` : `${rows.length} records`;
+    let visible = 0;
+    for (const row of rows) {
+      row.hidden = !(matches.includes(row) && inTab(row, activeTab));
+      if (!row.hidden) visible++;
+    }
+    [...rows].sort(comparators[sort.value as SortMode]).forEach((row) => table.append(row));
+
+    const total = rows.filter((row) => inTab(row, activeTab)).length;
+    count.textContent = visible === total ? `${total} records` : `${visible} of ${total} records`;
     empty.hidden = visible > 0;
   }
+
+  function selectTab(id: string, focus = false): void {
+    const target = tabs.find((tab) => tab.dataset.tab === id) ?? tabs[0];
+    activeTab = target.dataset.tab!;
+    for (const tab of tabs) {
+      const selected = tab === target;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    }
+    panel.setAttribute('aria-labelledby', target.id);
+    note.textContent = target.dataset.note ?? '';
+    if (focus) target.focus();
+    // On narrow screens, slide the tab row so the selected tab is in view (without scrolling the page).
+    const bar = target.parentElement!;
+    if (target.offsetLeft < bar.scrollLeft || target.offsetLeft + target.offsetWidth > bar.scrollLeft + bar.clientWidth) {
+      bar.scrollLeft = target.offsetLeft - 16;
+    }
+    update();
+  }
+
+  /** Keeps the open tab in the address (?type=course) so a link can point straight at it. */
+  function rememberTab(): void {
+    const url = new URL(location.href);
+    if (activeTab === 'all') url.searchParams.delete('type');
+    else url.searchParams.set('type', activeTab);
+    history.replaceState(null, '', url);
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      selectTab(tab.dataset.tab!);
+      rememberTab();
+    });
+    // Arrow keys, Home and End move between tabs, as in the standard tabs pattern.
+    tab.addEventListener('keydown', (event) => {
+      const moves: Record<string, number> = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+      const next = moves[event.key];
+      if (next === undefined) return;
+      event.preventDefault();
+      selectTab(tabs[(next + tabs.length) % tabs.length].dataset.tab!, true);
+      rememberTab();
+    });
+  });
 
   search.addEventListener('input', update);
   sort.addEventListener('change', update);
@@ -63,13 +110,16 @@ export function initGallery(): void {
       const open = toggle.getAttribute('aria-expanded') !== 'true';
       setOpen(row, open);
       // Put the id in the address bar so a specific certificate can be shared, e.g. …/#hackerrank-java-basic
-      history.replaceState(null, '', open ? `#${row.id}` : location.pathname + location.search);
+      history.replaceState(null, '', open ? `${location.pathname}${location.search}#${row.id}` : location.pathname + location.search);
     });
   }
 
   // ---- start up ----
   markExpired(document);
   const linked = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  const requestedTab = new URLSearchParams(location.search).get('type') ?? 'all';
+  // A link to one certificate opens a tab that contains it.
+  selectTab(linked?.matches('[data-row]') && !inTab(linked, requestedTab) ? 'all' : requestedTab);
   if (linked?.matches('[data-row]')) {
     setOpen(linked, true);
     linked.scrollIntoView({ block: 'start' });

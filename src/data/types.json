@@ -1,5 +1,6 @@
 [
-  { "id": "assessed", "label": "Assessed credentials", "tabLabel": "Assessed", "note": "Passed a timed exam, skills test or graded project." },
+  { "id": "assessed", "label": "Professional certificates", "tabLabel": "Professional", "note": "Professional certifications earned through exams and graded projects." },
   { "id": "competition", "label": "Hackathons and competitions", "tabLabel": "Hackathons", "note": "Built and submitted under time pressure, ranked against other entrants." },
-  { "id": "course", "label": "Courses and programmes", "tabLabel": "Courses", "note": "Completed coursework, programmes and workshops." }
+  { "id": "skills-test", "label": "Skills tests", "note": "Passed a timed skills assessment.", "groupByProvider": true },
+  { "id": "course", "label": "Courses and programmes", "tabLabel": "Courses", "note": "Completed coursework, programmes and workshops.", "groupByProvider": true }
 ]

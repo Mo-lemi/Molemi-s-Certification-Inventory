@@ -7,62 +7,81 @@ import { certificates, providerOf, slugify, types, type Certificate } from '../l
 
 const newestFirst = (a: Certificate, b: Certificate) => b.dateEarned.localeCompare(a.dateEarned);
 
+/** One top-level row in a group, with any certificates it includes listed in a dropdown under it. */
+interface Entry {
+  cert: Certificate;
+  /** true when this certificate's main row lives in another group, so this row is a second copy. */
+  copy: boolean;
+  children: Certificate[];
+}
+
 interface Tab {
   id: string;
   label: string;
   /** Shorter name for the tab itself, so the tab row fits on one line; label is used elsewhere. */
   tabLabel?: string;
   note: string;
+  /** Number of distinct certificates in the tab. */
   count: number;
-  /** The certificates this tab shows, newest first. */
-  certs: Certificate[];
-  /** Certificate type this tab shows; null shows everything. */
-  type: string | null;
-  /** For course tabs: the provider (see providerOf) this tab shows. */
-  provider: string | null;
+  entries: Entry[];
 }
 
-// Courses are split into one tab per provider, biggest first.
-const courses = certificates.filter((c) => c.type === 'course');
-const providers = [...new Set(courses.map((c) => providerOf(c.issuer)))]
-  .map((provider) => ({ provider, certs: courses.filter((c) => providerOf(c.issuer) === provider) }))
-  .sort((a, b) => b.certs.length - a.certs.length || a.provider.localeCompare(b.provider));
-
+const plain = (certs: Certificate[]): Entry[] => certs.sort(newestFirst).map((cert) => ({ cert, copy: false, children: [] }));
+const distinct = (entries: Entry[]) => new Set(entries.flatMap((e) => [e.cert.id, ...e.children.map((c) => c.id)])).size;
 const listNames = (names: string[]) =>
   names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0];
 
-// "All" opens first, then the other types (in types.json order), then the course providers.
+// Types with their own tab (Professional, Hackathons) versus types split into one tab per provider (courses, skills tests).
+const ownTabTypes = types.filter((type) => !type.groupByProvider);
+const byProvider = certificates.filter((c) => types.find((t) => t.id === c.type)?.groupByProvider);
+
+// Certificates that include others (e.g. the Google AI Professional Certificate and its courses).
+const programs = certificates.filter((c) => c.includes.length > 0);
+const includedIds = new Set(programs.flatMap((p) => p.includes));
+
+const providerTabs: Tab[] = [...new Set(byProvider.map((c) => providerOf(c.issuer)))].map((provider) => {
+  const certs = byProvider.filter((c) => providerOf(c.issuer) === provider);
+  // Included certificates sit under their program's dropdown instead of at the top level.
+  const programEntries = programs
+    .map((program) => ({
+      cert: program,
+      copy: !certs.includes(program),
+      children: certs.filter((c) => program.includes.includes(c.id)).sort(newestFirst),
+    }))
+    .filter((entry) => entry.children.length > 0);
+  const topLevel = certs.filter((c) => !includedIds.has(c.id) && !programEntries.some((e) => e.cert === c));
+  const entries = [...programEntries, ...plain(topLevel)];
+  return {
+    id: slugify(provider),
+    label: provider,
+    note: `Certificates earned through ${listNames([...new Set(certs.map((c) => c.issuer))])}.`,
+    count: distinct(entries),
+    entries,
+  };
+});
+providerTabs.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+// Every tab except "All" is one group; "All" stacks the groups in tab order.
+const groups: Tab[] = [
+  ...ownTabTypes
+    .map((type) => {
+      const entries = plain(certificates.filter((c) => c.type === type.id));
+      return { id: type.id, label: type.label, tabLabel: type.tabLabel, note: type.note, count: entries.length, entries };
+    })
+    .filter((tab) => tab.count > 0),
+  ...providerTabs,
+];
 const tabs: Tab[] = [
   {
     id: 'all',
     label: 'All',
     note: 'Every credential, course and competition on record. Open a group to see its certificates.',
     count: certificates.length,
-    certs: [...certificates].sort(newestFirst),
-    type: null,
-    provider: null,
+    entries: [],
   },
-  ...types
-    .filter((type) => type.id !== 'course')
-    .map((type) => {
-      const certs = certificates.filter((c) => c.type === type.id).sort(newestFirst);
-      return { ...type, count: certs.length, certs, type: type.id, provider: null };
-    })
-    .filter((tab) => tab.count > 0),
-  ...providers.map(({ provider, certs }) => ({
-    id: slugify(provider),
-    label: provider,
-    note: `Courses and programmes completed through ${listNames([...new Set(certs.map((c) => c.issuer))])}.`,
-    count: certs.length,
-    certs: [...certs].sort(newestFirst),
-    type: 'course',
-    provider,
-  })),
+  ...groups,
 ];
-const firstProviderTab = tabs.find((tab) => tab.provider);
-
-// Every tab except "All" is one group; "All" stacks the groups in tab order.
-const groups = tabs.slice(1);
+const firstProviderTab = providerTabs[0];
 
 const updated = new Date().toISOString().slice(0, 10);
 ---
@@ -89,7 +108,7 @@ const updated = new Date().toISOString().slice(0, 10);
       </p>
     </div>
 
-    <div role="tablist" aria-label="Filter by how each certificate was earned" class="tabs -mx-4 flex border-b border-ink px-4 sm:mx-0 sm:px-0">
+    <div role="tablist" aria-label="Filter certificates" class="tabs -mx-4 flex border-b border-ink px-4 sm:mx-0 sm:px-0">
       {
         tabs.map((tab, i) => (
           <button
@@ -97,8 +116,6 @@ const updated = new Date().toISOString().slice(0, 10);
             role="tab"
             id={`tab-${tab.id}`}
             data-tab={tab.id}
-            data-tab-type={tab.type}
-            data-tab-provider={tab.provider}
             data-note={tab.note}
             aria-selected={i === 0 ? 'true' : 'false'}
             aria-controls="records"
@@ -134,18 +151,48 @@ const updated = new Date().toISOString().slice(0, 10);
             </h2>
             <div id={`group-${group.id}`} data-group-body class="pb-6">
               <p data-group-note class="mt-3 mb-1 text-sm text-muted">{group.note}</p>
-            <table class="w-full border-collapse text-left text-sm">
-              <thead class="font-mono text-xs text-muted max-sm:sr-only">
-                <tr class="border-b border-rule">
-                  <th scope="col" class="hidden w-24 py-2 pr-4 font-normal md:table-cell">no.</th>
-                  <th scope="col" class="py-2 pr-4 font-normal">credential / issued by</th>
-                  <th scope="col" class="hidden w-32 py-2 pr-4 font-normal md:table-cell">domain</th>
-                  <th scope="col" class="hidden w-28 py-2 pr-4 font-normal sm:table-cell">date</th>
-                  <th scope="col" class="w-16 py-2 text-right font-normal">proof</th>
-                </tr>
-              </thead>
-              {group.certs.map((cert) => <CertificateRow cert={cert} />)}
-            </table>
+              <table class="w-full border-collapse text-left text-sm">
+                <thead class="font-mono text-xs text-muted max-sm:sr-only">
+                  <tr class="border-b border-rule">
+                    <th scope="col" class="hidden w-24 py-2 pr-4 font-normal md:table-cell">no.</th>
+                    <th scope="col" class="py-2 pr-4 font-normal">credential / issued by</th>
+                    <th scope="col" class="hidden w-32 py-2 pr-4 font-normal md:table-cell">domain</th>
+                    <th scope="col" class="hidden w-28 py-2 pr-4 font-normal sm:table-cell">date</th>
+                    <th scope="col" class="w-16 py-2 text-right font-normal">proof</th>
+                  </tr>
+                </thead>
+                {
+                  group.entries.map((entry) => (
+                    <>
+                      <CertificateRow cert={entry.cert} copy={entry.copy} />
+                      {entry.children.length > 0 && (
+                        <>
+                          {/* The dropdown that lists the certificates this one includes. */}
+                          <tbody data-program-toggle={entry.cert.id}>
+                            <tr class="border-b border-rule">
+                              <td class="hidden md:table-cell" />
+                              <td colspan="4" class="py-2 pr-4">
+                                <button
+                                  type="button"
+                                  data-program-button
+                                  aria-expanded="false"
+                                  class="flex items-center gap-3 font-mono text-xs text-muted hover:text-ink"
+                                >
+                                  <span data-program-icon class="w-3" aria-hidden="true">+</span>
+                                  {entry.children.length} courses completed for this certificate
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                          {entry.children.map((child) => (
+                            <CertificateRow cert={child} parent={entry.cert.id} />
+                          ))}
+                        </>
+                      )}
+                    </>
+                  ))
+                }
+              </table>
             </div>
           </section>
         ))

@@ -16,6 +16,8 @@ export interface CertificateType {
   label: string;
   /** Optional shorter name for the tab row, e.g. "Hackathons". */
   tabLabel?: string;
+  /** true: certificates of this type get no tab of their own, but are grouped into one tab per provider. */
+  groupByProvider?: boolean;
   note: string;
 }
 
@@ -34,6 +36,8 @@ export interface Certificate {
   verifyUrl: string | null;
   /** Path inside /public, e.g. "certificates/java.pdf". null for link-only certificates. */
   file: string | null;
+  /** For a certificate earned by completing other certificates (e.g. a professional certificate made of courses): their ids. */
+  includes: string[];
   skills: string[];
 }
 
@@ -128,6 +132,12 @@ function validate(certs: Certificate[]): Certificate[] {
     }
   }
 
+  for (const c of certs) {
+    for (const id of c.includes) {
+      if (!seen.has(id)) errors.push(`Certificate "${c.id}": "includes" lists unknown certificate "${id}"`);
+    }
+  }
+
   if (errors.length) {
     throw new Error(`Problems in src/data/certificates.json:\n  - ${errors.join('\n  - ')}`);
   }
@@ -138,6 +148,7 @@ export const certificates: Certificate[] = validate(
   rawCertificates.map((c) => ({
     ...c,
     description: c.description ?? null,
+    includes: ('includes' in c ? c.includes : null) ?? [],
     skills: c.skills ?? [],
   })) as Certificate[],
 );

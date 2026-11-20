@@ -1,15 +1,19 @@
 ---
 import Preview from './Preview.astro';
-import { getCategory, providerOf, recordNumber, thumbImage, withBase, type Certificate } from '../lib/certificates';
+import { getCategory, recordNumber, thumbImage, withBase, type Certificate } from '../lib/certificates';
 
 interface Props {
   cert: Certificate;
+  /** true for a second copy of a certificate shown in another group: it gets no id, so links (#id) go to the main row. */
+  copy?: boolean;
+  /** For a certificate listed under another one's dropdown: that certificate's id. */
+  parent?: string;
 }
 
-const { cert } = Astro.props;
+const { cert, copy = false, parent } = Astro.props;
 const domain = getCategory(cert.category).label;
 const number = recordNumber(cert.id);
-const detailId = `detail-${cert.id}`;
+const detailId = `detail-${cert.id}${copy ? '-copy' : ''}`;
 const thumb = thumbImage(cert.file);
 const searchText = [cert.title, cert.issuer, domain, number, cert.credentialId, cert.description, ...cert.skills]
   .filter(Boolean)
@@ -19,10 +23,10 @@ const searchText = [cert.title, cert.issuer, domain, number, cert.credentialId, 
 
 <!-- One <tbody> per certificate: the summary row, plus a detail row that opens in place. -->
 <tbody
-  id={cert.id}
+  id={copy ? undefined : cert.id}
   data-row
-  data-type={cert.type}
-  data-provider={providerOf(cert.issuer)}
+  data-cert={cert.id}
+  data-parent={parent}
   data-search={searchText}
   data-date={cert.dateEarned}
   data-title={cert.title.toLowerCase()}

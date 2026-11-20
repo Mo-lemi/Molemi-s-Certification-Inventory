@@ -1178,5 +1178,110 @@
     "skills": [
       "App Development"
     ]
+  },
+  {
+    "id": "microsoft-elevate-learning-path-ai-for-everyone",
+    "title": "Learning Path: AI for Everyone",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "assessed",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-learning-path-ai-for-everyone.pdf",
+    "includes": [
+      "microsoft-elevate-ai-basics",
+      "microsoft-elevate-generative-ai",
+      "microsoft-elevate-internet-search-and-beyond",
+      "microsoft-elevate-responsible-ai",
+      "microsoft-elevate-boost-your-productivity-with-copilot",
+      "microsoft-elevate-ai-for-all",
+      "microsoft-elevate-explore-m365-copilot-chat"
+    ],
+    "skills": [
+      "AI Fundamentals",
+      "Generative AI",
+      "Responsible AI",
+      "Microsoft Copilot"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-learning-path-cybersecurity",
+    "title": "Learning Path: Cybersecurity",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "assessed",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-learning-path-cybersecurity.pdf",
+    "includes": [
+      "microsoft-elevate-az-104-azure-administrator",
+      "microsoft-elevate-az-500-azure-security-technologies",
+      "microsoft-elevate-sc-200-security-operations-analyst",
+      "microsoft-elevate-sc-300-identity-and-access-administrator",
+      "microsoft-elevate-sc-400-information-protection",
+      "microsoft-elevate-sc-5002-defender-for-cloud-compliance"
+    ],
+    "skills": [
+      "Cloud Security",
+      "Microsoft Azure",
+      "Security Operations",
+      "Identity and Access Management",
+      "Compliance"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-learning-path-power-platform",
+    "title": "Learning Path: Power Platform",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "assessed",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-learning-path-power-platform.pdf",
+    "includes": [
+      "microsoft-elevate-pl-200-power-platform-functional-consultant",
+      "microsoft-elevate-pl-300-power-bi-data-analyst",
+      "microsoft-elevate-pl-400-power-platform-developer",
+      "microsoft-elevate-pl-500-power-platform-rpa-developer"
+    ],
+    "skills": [
+      "Microsoft Power Platform",
+      "Power BI",
+      "Power Automate",
+      "Low-Code Development"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-learning-path-digital-literacy",
+    "title": "Learning Path: Digital Literacy",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "assessed",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-learning-path-digital-literacy.pdf",
+    "includes": [
+      "microsoft-elevate-digital-literacy-work-with-computers",
+      "microsoft-elevate-digital-literacy-access-information-online",
+      "microsoft-elevate-digital-literacy-communicate-online",
+      "microsoft-elevate-digital-literacy-participate-safely-online",
+      "microsoft-elevate-digital-literacy-create-digital-content",
+      "microsoft-elevate-digital-literacy-collaborate-and-manage-content"
+    ],
+    "skills": [
+      "Digital Literacy"
+    ]
   }
 ]

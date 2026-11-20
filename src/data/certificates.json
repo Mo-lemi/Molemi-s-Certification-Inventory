@@ -1123,5 +1123,22 @@
       "Content Creation",
       "App Development"
     ]
+  },
+  {
+    "id": "women-techmakers-tech-mentorship-2026-data-science",
+    "title": "Tech Mentorship Program 2026: Data Science Track",
+    "description": null,
+    "issuer": "Women Techmakers Bambili and Gwarinpa",
+    "category": "technical",
+    "type": "assessed",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/women-techmakers-tech-mentorship-2026-data-science.png",
+    "skills": [
+      "Data Science",
+      "Mentorship"
+    ]
   }
 ]

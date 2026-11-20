@@ -1,6 +1,8 @@
 [
   { "id": "technical", "label": "Technical" },
   { "id": "ai", "label": "AI" },
+  { "id": "data", "label": "Data" },
+  { "id": "data-ai-ml", "label": "Data/AI/ML" },
   { "id": "work-readiness", "label": "Work readiness" },
   { "id": "soft-skills", "label": "Soft skills" }
 ]

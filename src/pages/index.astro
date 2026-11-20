@@ -34,7 +34,7 @@ const tabs: Tab[] = [
   {
     id: 'all',
     label: 'All',
-    note: 'Every credential, course and competition on record, grouped as in the tabs above.',
+    note: 'Every credential, course and competition on record. Open a group to see its certificates.',
     count: certificates.length,
     certs: [...certificates].sort(newestFirst),
     type: null,
@@ -114,17 +114,24 @@ const updated = new Date().toISOString().slice(0, 10);
       {
         groups.map((group) => (
           <section data-group={group.id} aria-labelledby={`heading-${group.id}`}>
-            <div data-group-heading class="mt-10">
-              <div class="flex items-baseline justify-between gap-4 border-b border-ink pb-2">
-                <h2 id={`heading-${group.id}`} class="font-display text-xl font-medium">
-                  {group.label}
-                </h2>
-                <span data-group-count class="font-mono text-xs text-muted">
+            {/* In the All tab each group is a dropdown: this bar opens and closes its list. Other tabs hide the bar. */}
+            <h2 data-group-heading id={`heading-${group.id}`} class="font-display text-lg font-medium sm:text-xl">
+              <button
+                type="button"
+                data-group-toggle
+                aria-expanded="false"
+                aria-controls={`group-${group.id}`}
+                class="group flex w-full items-baseline gap-3 border-b border-rule py-4 text-left hover:border-ink"
+              >
+                <span data-group-icon class="w-3 shrink-0 font-mono text-sm text-muted" aria-hidden="true">+</span>
+                <span class="underline-offset-4 group-hover:underline">{group.label}</span>
+                <span data-group-count class="ml-auto font-mono text-xs font-normal text-muted">
                   {group.count}
                 </span>
-              </div>
-              <p class="mt-2 text-sm text-muted">{group.note}</p>
-            </div>
+              </button>
+            </h2>
+            <div id={`group-${group.id}`} data-group-body class="pb-6">
+              <p data-group-note class="mt-3 mb-1 text-sm text-muted">{group.note}</p>
             <table class="w-full border-collapse text-left text-sm">
               <thead class="font-mono text-xs text-muted max-sm:sr-only">
                 <tr class="border-b border-rule">
@@ -137,6 +144,7 @@ const updated = new Date().toISOString().slice(0, 10);
               </thead>
               {group.certs.map((cert) => <CertificateRow cert={cert} />)}
             </table>
+            </div>
           </section>
         ))
       }

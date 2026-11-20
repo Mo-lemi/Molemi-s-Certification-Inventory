@@ -27,6 +27,10 @@ export function initGallery(): void {
   const empty = document.getElementById('empty')!;
 
   let activeTab = tabs[0];
+  // Dropdown state in the All tab. Groups start closed. While searching, groups with matches
+  // open by themselves unless the visitor closes them; clearing the search restores openGroups.
+  const openGroups = new Set<string>();
+  const closedWhileSearching = new Set<string>();
   /** Whether a row belongs in a tab: tabs filter by type, and course tabs also by provider. */
   const inTab = (row: HTMLElement, tab: HTMLElement) =>
     (!tab.dataset.tabType || row.dataset.type === tab.dataset.tabType) &&
@@ -42,8 +46,9 @@ export function initGallery(): void {
       tab.querySelector('[data-tab-count]')!.textContent = String(matches.filter((row) => inTab(row, tab)).length);
     }
 
-    // "All" stacks every group under its heading; any other tab shows just its own group, without the heading.
+    // "All" stacks every group as a dropdown; any other tab shows just its own group's list, without the bar.
     const showingAll = activeTab === tabs[0];
+    const searching = words.length > 0;
     let visible = 0;
     let total = 0;
     for (const group of groups) {
@@ -57,8 +62,14 @@ export function initGallery(): void {
       }
       groupRows.sort(comparators[sort.value as SortMode]).forEach((row) => table.append(row));
 
+      const id = group.dataset.group!;
+      const open = !showingAll || (searching ? !closedWhileSearching.has(id) : openGroups.has(id));
       group.hidden = !inView || shown === 0;
       group.querySelector<HTMLElement>('[data-group-heading]')!.hidden = !showingAll;
+      group.querySelector<HTMLElement>('[data-group-note]')!.hidden = !showingAll;
+      group.querySelector<HTMLElement>('[data-group-body]')!.hidden = !open;
+      group.querySelector('[data-group-toggle]')!.setAttribute('aria-expanded', String(open));
+      group.querySelector('[data-group-icon]')!.textContent = open ? '−' : '+';
       group.querySelector('[data-group-count]')!.textContent = String(shown);
       if (inView) {
         visible += shown;
@@ -114,8 +125,22 @@ export function initGallery(): void {
     });
   });
 
-  search.addEventListener('input', update);
+  search.addEventListener('input', () => {
+    closedWhileSearching.clear();
+    update();
+  });
   sort.addEventListener('change', update);
+
+  for (const group of groups) {
+    const id = group.dataset.group!;
+    group.querySelector('[data-group-toggle]')!.addEventListener('click', () => {
+      const states = search.value.trim() ? closedWhileSearching : openGroups;
+      // openGroups lists open groups; closedWhileSearching lists closed ones, so toggling is the same move.
+      if (states.has(id)) states.delete(id);
+      else states.add(id);
+      update();
+    });
+  }
 
   // ---- opening a row in place ----
   function setOpen(row: HTMLElement, open: boolean): void {
@@ -138,7 +163,9 @@ export function initGallery(): void {
   markExpired(document);
   const linked = document.getElementById(decodeURIComponent(location.hash.slice(1)));
   const requested = tabs.find((tab) => tab.dataset.tab === new URLSearchParams(location.search).get('tab')) ?? tabs[0];
-  // A link to one certificate opens a tab that contains it.
+  // A link to one certificate opens a tab that contains it, and its dropdown in the All tab.
+  const linkedGroup = linked?.matches('[data-row]') ? linked.closest<HTMLElement>('[data-group]') : null;
+  if (linkedGroup) openGroups.add(linkedGroup.dataset.group!);
   selectTab((linked?.matches('[data-row]') && !inTab(linked, requested) ? tabs[0] : requested).dataset.tab!);
   if (linked?.matches('[data-row]')) {
     setOpen(linked, true);

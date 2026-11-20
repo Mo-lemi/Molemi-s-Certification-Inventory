@@ -1142,5 +1142,41 @@
       "Group Project",
       "Mentorship"
     ]
+  },
+  {
+    "id": "unesco-youth-hackathon-2026",
+    "title": "Youth Hackathon 2026",
+    "description": "I co-developed Qhaphela in response to the theme \"Play Your Part: Youth Designing the Future of Media and Information Literacy\". Qhaphela is an AI survival toolkit and Manifest V3 Chrome extension that uses a serialised Random Forest text classification model built with scikit-learn, with SHAP explainability, to screen and flag predatory recruitment scams.",
+    "issuer": "UNESCO",
+    "category": "ai",
+    "type": "competition",
+    "dateEarned": "2026-10-24",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/unesco-youth-hackathon-2026.pdf",
+    "skills": [
+      "Machine Learning",
+      "scikit-learn",
+      "Explainable AI (SHAP)",
+      "Chrome Extensions",
+      "Digital Safety"
+    ]
+  },
+  {
+    "id": "fnb-app-of-the-year-hackathon-2026",
+    "title": "App of the Year Hackathon 2026 (App: Madi)",
+    "description": null,
+    "issuer": "FNB",
+    "category": "technical",
+    "type": "competition",
+    "dateEarned": "2026-10-25",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/fnb-app-of-the-year-hackathon-2026.png",
+    "skills": [
+      "App Development"
+    ]
   }
 ]

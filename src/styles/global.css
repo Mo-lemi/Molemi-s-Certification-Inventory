@@ -58,6 +58,13 @@ body {
 .tabs::-webkit-scrollbar {
   display: none;
 }
+/* Wider screens have room to show every tab, wrapping onto a second line if needed. */
+@media (min-width: 640px) {
+  .tabs {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+}
 .tab {
   flex-shrink: 0;
   white-space: nowrap;
@@ -71,6 +78,19 @@ body {
 }
 .tab:hover {
   color: var(--color-ink);
+}
+/* A short divider between the "how it was earned" tabs and the course provider tabs. */
+.tab-group-start {
+  position: relative;
+  margin-left: 0.5rem;
+}
+.tab-group-start::before {
+  content: '';
+  position: absolute;
+  left: -0.25rem;
+  top: 30%;
+  bottom: 30%;
+  border-left: 1px solid var(--color-rule);
 }
 .tab[aria-selected='true'] {
   color: var(--color-ink);

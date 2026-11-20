@@ -3,19 +3,49 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import CertificateRow from '../components/CertificateRow.astro';
 import profile from '../data/profile.json';
-import { certificates, types, type Certificate } from '../lib/certificates';
+import { certificates, providerOf, slugify, types, type Certificate } from '../lib/certificates';
 
 const newestFirst = (a: Certificate, b: Certificate) => b.dateEarned.localeCompare(a.dateEarned);
 
 const sorted = [...certificates].sort(newestFirst);
 
-// One tab per type (in types.json order), after an "All" tab that opens first.
-const tabs = [
-  { id: 'all', label: 'All', note: 'Every credential, course and competition on record.', count: certificates.length },
+interface Tab {
+  id: string;
+  label: string;
+  note: string;
+  count: number;
+  /** Certificate type this tab shows; null shows everything. */
+  type: string | null;
+  /** For course tabs: the provider (see providerOf) this tab shows. */
+  provider: string | null;
+}
+
+// Courses are split into one tab per provider, biggest first.
+const courses = certificates.filter((c) => c.type === 'course');
+const providers = [...new Set(courses.map((c) => providerOf(c.issuer)))]
+  .map((provider) => ({ provider, certs: courses.filter((c) => providerOf(c.issuer) === provider) }))
+  .sort((a, b) => b.certs.length - a.certs.length || a.provider.localeCompare(b.provider));
+
+const listNames = (names: string[]) =>
+  names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0];
+
+// "All" opens first, then the other types (in types.json order), then the course providers.
+const tabs: Tab[] = [
+  { id: 'all', label: 'All', note: 'Every credential, course and competition on record.', count: certificates.length, type: null, provider: null },
   ...types
-    .map((type) => ({ ...type, count: certificates.filter((c) => c.type === type.id).length }))
+    .filter((type) => type.id !== 'course')
+    .map((type) => ({ ...type, count: certificates.filter((c) => c.type === type.id).length, type: type.id, provider: null }))
     .filter((tab) => tab.count > 0),
+  ...providers.map(({ provider, certs }) => ({
+    id: slugify(provider),
+    label: provider,
+    note: `Courses and programmes completed through ${listNames([...new Set(certs.map((c) => c.issuer))])}.`,
+    count: certs.length,
+    type: 'course',
+    provider,
+  })),
 ];
+const firstProviderTab = tabs.find((tab) => tab.provider);
 
 const updated = new Date().toISOString().slice(0, 10);
 ---
@@ -50,11 +80,13 @@ const updated = new Date().toISOString().slice(0, 10);
             role="tab"
             id={`tab-${tab.id}`}
             data-tab={tab.id}
+            data-tab-type={tab.type}
+            data-tab-provider={tab.provider}
             data-note={tab.note}
             aria-selected={i === 0 ? 'true' : 'false'}
             aria-controls="records"
             tabindex={i === 0 ? 0 : -1}
-            class="tab"
+            class:list={['tab', tab === firstProviderTab && 'tab-group-start']}
           >
             {tab.label} <span data-tab-count class="font-mono text-xs text-muted">{tab.count}</span>
           </button>

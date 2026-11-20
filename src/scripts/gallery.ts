@@ -26,8 +26,11 @@ export function initGallery(): void {
   const count = document.getElementById('result-count')!;
   const empty = document.getElementById('empty')!;
 
-  let activeTab = 'all';
-  const inTab = (row: HTMLElement, tab: string) => tab === 'all' || row.dataset.type === tab;
+  let activeTab = tabs[0];
+  /** Whether a row belongs in a tab: tabs filter by type, and course tabs also by provider. */
+  const inTab = (row: HTMLElement, tab: HTMLElement) =>
+    (!tab.dataset.tabType || row.dataset.type === tab.dataset.tabType) &&
+    (!tab.dataset.tabProvider || row.dataset.provider === tab.dataset.tabProvider);
 
   // ---- searching, sorting and tab filtering ----
   function update(): void {
@@ -36,7 +39,7 @@ export function initGallery(): void {
 
     // Each tab's count shows how many search matches it holds.
     for (const tab of tabs) {
-      tab.querySelector('[data-tab-count]')!.textContent = String(matches.filter((row) => inTab(row, tab.dataset.tab!)).length);
+      tab.querySelector('[data-tab-count]')!.textContent = String(matches.filter((row) => inTab(row, tab)).length);
     }
 
     let visible = 0;
@@ -47,13 +50,14 @@ export function initGallery(): void {
     [...rows].sort(comparators[sort.value as SortMode]).forEach((row) => table.append(row));
 
     const total = rows.filter((row) => inTab(row, activeTab)).length;
-    count.textContent = visible === total ? `${total} records` : `${visible} of ${total} records`;
+    const records = total === 1 ? 'record' : 'records';
+    count.textContent = visible === total ? `${total} ${records}` : `${visible} of ${total} ${records}`;
     empty.hidden = visible > 0;
   }
 
   function selectTab(id: string, focus = false): void {
     const target = tabs.find((tab) => tab.dataset.tab === id) ?? tabs[0];
-    activeTab = target.dataset.tab!;
+    activeTab = target;
     for (const tab of tabs) {
       const selected = tab === target;
       tab.setAttribute('aria-selected', String(selected));
@@ -70,11 +74,11 @@ export function initGallery(): void {
     update();
   }
 
-  /** Keeps the open tab in the address (?type=course) so a link can point straight at it. */
+  /** Keeps the open tab in the address (?tab=datacamp) so a link can point straight at it. */
   function rememberTab(): void {
     const url = new URL(location.href);
-    if (activeTab === 'all') url.searchParams.delete('type');
-    else url.searchParams.set('type', activeTab);
+    if (activeTab === tabs[0]) url.searchParams.delete('tab');
+    else url.searchParams.set('tab', activeTab.dataset.tab!);
     history.replaceState(null, '', url);
   }
 
@@ -117,9 +121,9 @@ export function initGallery(): void {
   // ---- start up ----
   markExpired(document);
   const linked = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-  const requestedTab = new URLSearchParams(location.search).get('type') ?? 'all';
+  const requested = tabs.find((tab) => tab.dataset.tab === new URLSearchParams(location.search).get('tab')) ?? tabs[0];
   // A link to one certificate opens a tab that contains it.
-  selectTab(linked?.matches('[data-row]') && !inTab(linked, requestedTab) ? 'all' : requestedTab);
+  selectTab((linked?.matches('[data-row]') && !inTab(linked, requested) ? tabs[0] : requested).dataset.tab!);
   if (linked?.matches('[data-row]')) {
     setOpen(linked, true);
     linked.scrollIntoView({ block: 'start' });

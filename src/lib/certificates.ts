@@ -45,6 +45,21 @@ export function getCategory(id: string): Category {
   return categoryById.get(id)!;
 }
 
+/**
+ * The brand a certificate belongs to, used for the course tabs. Drops the "(via …)" delivery
+ * partner and groups every Google issuer under one name, e.g.
+ * "Microsoft Elevate (via Ikamva)" → "Microsoft Elevate", "Google for Startups" → "Google".
+ */
+export function providerOf(issuer: string): string {
+  const brand = issuer.replace(/\s*\(via [^)]*\)$/, '');
+  return brand.startsWith('Google') ? 'Google' : brand;
+}
+
+/** A URL-safe id for a name, e.g. "IBM SkillsBuild" → "ibm-skillsbuild". */
+export function slugify(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
 /** Prefixes a /public path with the site's base path (needed for GitHub Pages). */
 export function withBase(p: string): string {
   if (/^https?:\/\//.test(p)) return p;

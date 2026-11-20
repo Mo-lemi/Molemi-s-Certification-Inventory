@@ -19,7 +19,7 @@ export function initGallery(): void {
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tab]'));
   const panel = document.getElementById('records')!;
   const note = document.getElementById('tab-note')!;
-  const table = panel.querySelector('table')!;
+  const groups = Array.from(panel.querySelectorAll<HTMLElement>('[data-group]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-row]'));
   const search = document.getElementById('search') as HTMLInputElement;
   const sort = document.getElementById('sort') as HTMLSelectElement;
@@ -42,14 +42,30 @@ export function initGallery(): void {
       tab.querySelector('[data-tab-count]')!.textContent = String(matches.filter((row) => inTab(row, tab)).length);
     }
 
+    // "All" stacks every group under its heading; any other tab shows just its own group, without the heading.
+    const showingAll = activeTab === tabs[0];
     let visible = 0;
-    for (const row of rows) {
-      row.hidden = !(matches.includes(row) && inTab(row, activeTab));
-      if (!row.hidden) visible++;
-    }
-    [...rows].sort(comparators[sort.value as SortMode]).forEach((row) => table.append(row));
+    let total = 0;
+    for (const group of groups) {
+      const table = group.querySelector('table')!;
+      const groupRows = Array.from(table.querySelectorAll<HTMLElement>('[data-row]'));
+      const inView = showingAll || group.dataset.group === activeTab.dataset.tab;
+      let shown = 0;
+      for (const row of groupRows) {
+        row.hidden = !matches.includes(row);
+        if (!row.hidden) shown++;
+      }
+      groupRows.sort(comparators[sort.value as SortMode]).forEach((row) => table.append(row));
 
-    const total = rows.filter((row) => inTab(row, activeTab)).length;
+      group.hidden = !inView || shown === 0;
+      group.querySelector<HTMLElement>('[data-group-heading]')!.hidden = !showingAll;
+      group.querySelector('[data-group-count]')!.textContent = String(shown);
+      if (inView) {
+        visible += shown;
+        total += groupRows.length;
+      }
+    }
+
     const records = total === 1 ? 'record' : 'records';
     count.textContent = visible === total ? `${total} ${records}` : `${visible} of ${total} ${records}`;
     empty.hidden = visible > 0;

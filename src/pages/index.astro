@@ -7,13 +7,13 @@ import { certificates, providerOf, slugify, types, type Certificate } from '../l
 
 const newestFirst = (a: Certificate, b: Certificate) => b.dateEarned.localeCompare(a.dateEarned);
 
-const sorted = [...certificates].sort(newestFirst);
-
 interface Tab {
   id: string;
   label: string;
   note: string;
   count: number;
+  /** The certificates this tab shows, newest first. */
+  certs: Certificate[];
   /** Certificate type this tab shows; null shows everything. */
   type: string | null;
   /** For course tabs: the provider (see providerOf) this tab shows. */
@@ -31,21 +31,36 @@ const listNames = (names: string[]) =>
 
 // "All" opens first, then the other types (in types.json order), then the course providers.
 const tabs: Tab[] = [
-  { id: 'all', label: 'All', note: 'Every credential, course and competition on record.', count: certificates.length, type: null, provider: null },
+  {
+    id: 'all',
+    label: 'All',
+    note: 'Every credential, course and competition on record, grouped as in the tabs above.',
+    count: certificates.length,
+    certs: [...certificates].sort(newestFirst),
+    type: null,
+    provider: null,
+  },
   ...types
     .filter((type) => type.id !== 'course')
-    .map((type) => ({ ...type, count: certificates.filter((c) => c.type === type.id).length, type: type.id, provider: null }))
+    .map((type) => {
+      const certs = certificates.filter((c) => c.type === type.id).sort(newestFirst);
+      return { ...type, count: certs.length, certs, type: type.id, provider: null };
+    })
     .filter((tab) => tab.count > 0),
   ...providers.map(({ provider, certs }) => ({
     id: slugify(provider),
     label: provider,
     note: `Courses and programmes completed through ${listNames([...new Set(certs.map((c) => c.issuer))])}.`,
     count: certs.length,
+    certs: [...certs].sort(newestFirst),
     type: 'course',
     provider,
   })),
 ];
 const firstProviderTab = tabs.find((tab) => tab.provider);
+
+// Every tab except "All" is one group; "All" stacks the groups in tab order.
+const groups = tabs.slice(1);
 
 const updated = new Date().toISOString().slice(0, 10);
 ---
@@ -96,18 +111,35 @@ const updated = new Date().toISOString().slice(0, 10);
 
     <section id="records" role="tabpanel" aria-labelledby="tab-all" class="mb-14">
       <p id="tab-note" class="mt-3 mb-2 text-sm text-muted">{tabs[0].note}</p>
-      <table class="w-full border-collapse text-left text-sm">
-        <thead class="font-mono text-xs text-muted max-sm:sr-only">
-          <tr class="border-b border-rule">
-            <th scope="col" class="hidden w-24 py-2 pr-4 font-normal md:table-cell">no.</th>
-            <th scope="col" class="py-2 pr-4 font-normal">credential / issued by</th>
-            <th scope="col" class="hidden w-32 py-2 pr-4 font-normal md:table-cell">domain</th>
-            <th scope="col" class="hidden w-28 py-2 pr-4 font-normal sm:table-cell">date</th>
-            <th scope="col" class="w-16 py-2 text-right font-normal">proof</th>
-          </tr>
-        </thead>
-        {sorted.map((cert) => <CertificateRow cert={cert} />)}
-      </table>
+      {
+        groups.map((group) => (
+          <section data-group={group.id} aria-labelledby={`heading-${group.id}`}>
+            <div data-group-heading class="mt-10">
+              <div class="flex items-baseline justify-between gap-4 border-b border-ink pb-2">
+                <h2 id={`heading-${group.id}`} class="font-display text-xl font-medium">
+                  {group.label}
+                </h2>
+                <span data-group-count class="font-mono text-xs text-muted">
+                  {group.count}
+                </span>
+              </div>
+              <p class="mt-2 text-sm text-muted">{group.note}</p>
+            </div>
+            <table class="w-full border-collapse text-left text-sm">
+              <thead class="font-mono text-xs text-muted max-sm:sr-only">
+                <tr class="border-b border-rule">
+                  <th scope="col" class="hidden w-24 py-2 pr-4 font-normal md:table-cell">no.</th>
+                  <th scope="col" class="py-2 pr-4 font-normal">credential / issued by</th>
+                  <th scope="col" class="hidden w-32 py-2 pr-4 font-normal md:table-cell">domain</th>
+                  <th scope="col" class="hidden w-28 py-2 pr-4 font-normal sm:table-cell">date</th>
+                  <th scope="col" class="w-16 py-2 text-right font-normal">proof</th>
+                </tr>
+              </thead>
+              {group.certs.map((cert) => <CertificateRow cert={cert} />)}
+            </table>
+          </section>
+        ))
+      }
       <p id="empty" hidden class="py-12 font-mono text-sm text-muted">No records found.</p>
     </section>
   </main>

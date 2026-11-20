@@ -456,5 +456,591 @@
       "Generative AI",
       "Entrepreneurship"
     ]
+  },
+  {
+    "id": "google-ai-for-writing-and-communicating",
+    "title": "AI for Writing and Communicating",
+    "description": null,
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-10-30",
+    "expiryDate": null,
+    "credentialId": "FTIBDP17S6BB",
+    "verifyUrl": "https://coursera.org/verify/FTIBDP17S6BB",
+    "file": "certificates/google-ai-for-writing-and-communicating.pdf",
+    "skills": [
+      "Generative AI",
+      "Writing",
+      "Communication"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-az-500-azure-security-technologies",
+    "title": "AZ-500: Microsoft Azure Security Technologies",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-az-500-azure-security-technologies.pdf",
+    "skills": [
+      "Microsoft Azure",
+      "Cloud Security"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-az-104-azure-administrator",
+    "title": "AZ-104: Microsoft Azure Administrator",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-az-104-azure-administrator.pdf",
+    "skills": [
+      "Microsoft Azure",
+      "Cloud Administration"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-sc-200-security-operations-analyst",
+    "title": "SC-200: Microsoft Security Operations Analyst",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-sc-200-security-operations-analyst.pdf",
+    "skills": [
+      "Security Operations",
+      "Microsoft Sentinel",
+      "Microsoft Defender"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-sc-300-identity-and-access-administrator",
+    "title": "SC-300: Microsoft Identity and Access Administrator",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-sc-300-identity-and-access-administrator.pdf",
+    "skills": [
+      "Identity and Access Management",
+      "Microsoft Entra ID"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-sc-400-information-protection",
+    "title": "SC-400: Implement Information Protection in Microsoft 365",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-sc-400-information-protection.pdf",
+    "skills": [
+      "Information Protection",
+      "Microsoft 365",
+      "Compliance"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-sc-5002-defender-for-cloud-compliance",
+    "title": "SC-5002: Secure Azure Services and Workloads with Microsoft Defender for Cloud Regulatory Compliance Controls",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-sc-5002-defender-for-cloud-compliance.pdf",
+    "skills": [
+      "Microsoft Defender for Cloud",
+      "Microsoft Azure",
+      "Compliance"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-pl-200-power-platform-functional-consultant",
+    "title": "PL-200: Microsoft Power Platform Functional Consultant",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-pl-200-power-platform-functional-consultant.pdf",
+    "skills": [
+      "Microsoft Power Platform",
+      "Power Apps",
+      "Power Automate"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-pl-300-power-bi-data-analyst",
+    "title": "PL-300: Microsoft Power BI Data Analyst",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-pl-300-power-bi-data-analyst.pdf",
+    "skills": [
+      "Power BI",
+      "Data Analysis",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-pl-400-power-platform-developer",
+    "title": "PL-400: Microsoft Power Platform Developer",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-pl-400-power-platform-developer.pdf",
+    "skills": [
+      "Microsoft Power Platform",
+      "Low-Code Development"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-pl-500-power-platform-rpa-developer",
+    "title": "PL-500: Microsoft Power Platform RPA Developer",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-pl-500-power-platform-rpa-developer.pdf",
+    "skills": [
+      "Robotic Process Automation",
+      "Power Automate"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-career-pathway-for-data-analyst",
+    "title": "Career Pathway for Data Analyst",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "technical",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-career-pathway-for-data-analyst.pdf",
+    "skills": [
+      "Data Analysis"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-ai-basics",
+    "title": "AI Fluency: AI Basics",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-ai-basics.pdf",
+    "skills": [
+      "AI Fundamentals"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-generative-ai",
+    "title": "AI Fluency: Generative AI",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-generative-ai.pdf",
+    "skills": [
+      "Generative AI"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-internet-search-and-beyond",
+    "title": "AI Fluency: Internet Search and Beyond",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-internet-search-and-beyond.pdf",
+    "skills": [
+      "AI-Assisted Search"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-responsible-ai",
+    "title": "AI Fluency: Responsible AI",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-responsible-ai.pdf",
+    "skills": [
+      "Responsible AI"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-boost-your-productivity-with-copilot",
+    "title": "AI Fluency: Boost Your Productivity with Copilot",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-boost-your-productivity-with-copilot.pdf",
+    "skills": [
+      "Microsoft Copilot",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-ai-for-all",
+    "title": "AI Fluency: AI for All",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-ai-for-all.pdf",
+    "skills": [
+      "AI Fundamentals"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-career-essentials-in-generative-ai",
+    "title": "Career Essentials in Generative AI",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-career-essentials-in-generative-ai.pdf",
+    "skills": [
+      "Generative AI"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-productivity-with-gen-ai",
+    "title": "Productivity with Gen AI",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-productivity-with-gen-ai.pdf",
+    "skills": [
+      "Generative AI",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-copilot-for-productivity",
+    "title": "Microsoft Copilot for Productivity",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-copilot-for-productivity.pdf",
+    "skills": [
+      "Microsoft Copilot",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-explore-m365-copilot-chat",
+    "title": "Explore Microsoft 365 Copilot Chat",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-explore-m365-copilot-chat.pdf",
+    "skills": [
+      "Microsoft 365 Copilot"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-craft-effective-prompts-for-copilot",
+    "title": "Craft Effective Prompts for Copilot for Microsoft 365",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-20",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-craft-effective-prompts-for-copilot.pdf",
+    "skills": [
+      "Prompt Engineering",
+      "Microsoft 365 Copilot"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-m365-word",
+    "title": "Microsoft 365 App Training: Word",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-m365-word.pdf",
+    "skills": [
+      "Microsoft Word"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-m365-excel",
+    "title": "Microsoft 365 App Training: Excel",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-m365-excel.pdf",
+    "skills": [
+      "Microsoft Excel"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-m365-outlook",
+    "title": "Microsoft 365 App Training: Outlook",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-m365-outlook.pdf",
+    "skills": [
+      "Microsoft Outlook"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-m365-powerpoint",
+    "title": "Microsoft 365 App Training: PowerPoint",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-m365-powerpoint.pdf",
+    "skills": [
+      "Microsoft PowerPoint"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-m365-teams",
+    "title": "Microsoft 365 App Training: Teams",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-m365-teams.pdf",
+    "skills": [
+      "Microsoft Teams"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-m365-onedrive-sharepoint",
+    "title": "Microsoft 365 App Training: OneDrive and SharePoint",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-19",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-m365-onedrive-sharepoint.pdf",
+    "skills": [
+      "OneDrive",
+      "SharePoint"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-digital-literacy-work-with-computers",
+    "title": "Digital Literacy: Work with Computers",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-17",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-digital-literacy-work-with-computers.pdf",
+    "skills": [
+      "Digital Literacy"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-digital-literacy-access-information-online",
+    "title": "Digital Literacy: Access Information Online",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-17",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-digital-literacy-access-information-online.pdf",
+    "skills": [
+      "Digital Literacy"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-digital-literacy-communicate-online",
+    "title": "Digital Literacy: Communicate Online",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-17",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-digital-literacy-communicate-online.pdf",
+    "skills": [
+      "Digital Literacy",
+      "Communication"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-digital-literacy-participate-safely-online",
+    "title": "Digital Literacy: Participate Safely and Responsibly Online",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-17",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-digital-literacy-participate-safely-online.pdf",
+    "skills": [
+      "Digital Literacy",
+      "Online Safety"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-digital-literacy-create-digital-content",
+    "title": "Digital Literacy: Create Digital Content",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-17",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-digital-literacy-create-digital-content.pdf",
+    "skills": [
+      "Digital Literacy",
+      "Content Creation"
+    ]
+  },
+  {
+    "id": "microsoft-elevate-digital-literacy-collaborate-and-manage-content",
+    "title": "Digital Literacy: Collaborate and Manage Content Digitally",
+    "description": null,
+    "issuer": "Microsoft Elevate (via Ikamva)",
+    "category": "work-readiness",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": null,
+    "verifyUrl": null,
+    "file": "certificates/microsoft-elevate-digital-literacy-collaborate-and-manage-content.pdf",
+    "skills": [
+      "Digital Literacy",
+      "Collaboration"
+    ]
   }
 ]

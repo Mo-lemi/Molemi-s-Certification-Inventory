@@ -1198,13 +1198,18 @@
       "microsoft-elevate-responsible-ai",
       "microsoft-elevate-boost-your-productivity-with-copilot",
       "microsoft-elevate-ai-for-all",
-      "microsoft-elevate-explore-m365-copilot-chat"
+      "microsoft-elevate-explore-m365-copilot-chat",
+      "microsoft-elevate-career-essentials-in-generative-ai",
+      "microsoft-elevate-productivity-with-gen-ai",
+      "microsoft-elevate-copilot-for-productivity",
+      "microsoft-elevate-craft-effective-prompts-for-copilot"
     ],
     "skills": [
       "AI Fundamentals",
       "Generative AI",
       "Responsible AI",
-      "Microsoft Copilot"
+      "Microsoft Copilot",
+      "Prompt Engineering"
     ]
   },
   {

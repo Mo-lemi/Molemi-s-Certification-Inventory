@@ -1278,10 +1278,17 @@
       "microsoft-elevate-digital-literacy-communicate-online",
       "microsoft-elevate-digital-literacy-participate-safely-online",
       "microsoft-elevate-digital-literacy-create-digital-content",
-      "microsoft-elevate-digital-literacy-collaborate-and-manage-content"
+      "microsoft-elevate-digital-literacy-collaborate-and-manage-content",
+      "microsoft-elevate-m365-outlook",
+      "microsoft-elevate-m365-word",
+      "microsoft-elevate-m365-excel",
+      "microsoft-elevate-m365-powerpoint",
+      "microsoft-elevate-m365-teams",
+      "microsoft-elevate-m365-onedrive-sharepoint"
     ],
     "skills": [
-      "Digital Literacy"
+      "Digital Literacy",
+      "Microsoft 365"
     ]
   }
 ]

@@ -1042,5 +1042,56 @@
       "Digital Literacy",
       "Collaboration"
     ]
+  },
+  {
+    "id": "google-ai-for-app-building",
+    "title": "AI for App Building",
+    "description": null,
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": "BDZGW0OVHJNM",
+    "verifyUrl": "https://coursera.org/verify/BDZGW0OVHJNM",
+    "file": "certificates/google-ai-for-app-building.pdf",
+    "skills": [
+      "Generative AI",
+      "App Development"
+    ]
+  },
+  {
+    "id": "google-ai-for-data-analysis",
+    "title": "AI for Data Analysis",
+    "description": null,
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-18",
+    "expiryDate": null,
+    "credentialId": "6THVLYEJOK9X",
+    "verifyUrl": "https://coursera.org/verify/6THVLYEJOK9X",
+    "file": "certificates/google-ai-for-data-analysis.pdf",
+    "skills": [
+      "Generative AI",
+      "Data Analysis"
+    ]
+  },
+  {
+    "id": "google-ai-for-content-creation",
+    "title": "AI for Content Creation",
+    "description": null,
+    "issuer": "Google (via Coursera)",
+    "category": "ai",
+    "type": "course",
+    "dateEarned": "2026-11-16",
+    "expiryDate": null,
+    "credentialId": "AMFYTC6NF2BF",
+    "verifyUrl": "https://coursera.org/verify/AMFYTC6NF2BF",
+    "file": "certificates/google-ai-for-content-creation.pdf",
+    "skills": [
+      "Generative AI",
+      "Content Creation"
+    ]
   }
 ]
